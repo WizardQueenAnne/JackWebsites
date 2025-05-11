@@ -1,4 +1,358 @@
-<link rel="stylesheet" href="css/styles.css">
+<!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Live chat widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+            <span>Chat with me</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h3>Chat with Jack</h3>
+                <span class="chat-close" id="chatClose">&times;</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message received">
+                    <div class="message-content">
+                        <p>👋 Hi there! I'm Jack. How can I help with your website needs today?</p>
+                    </div>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <textarea id="messageInput" placeholder="Type your message..."></textarea>
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cookie consent banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <p>This website uses cookies to ensure you get the best experience. <a href="#" id="cookiePolicy">Cookie Policy</a></p>
+            <div class="cookie-buttons">
+                <button id="cookieAccept" class="btn btn-sm btn-primary">Accept</button>
+                <button id="cookieDecline" class="btn btn-sm btn-outline-primary">Decline</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Live chat widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+            <span>Chat with me</span>
+        </div>    <!-- FAQ Section (Updated) -->
+    <section id="faq" class="faq section-padding bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Questions & Answers</span>
+                <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+                <p class="section-description">Answers to common questions about my web design services.</p>
+            </div>
+            
+            <div class="faq-container" data-aos="fade-up">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does it take to build a website?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most projects are completed within 1-2 weeks depending on the complexity and package selected. Simple websites may be completed in as little as 3-5 days, while more complex sites might take up to 3 weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to provide content for my website?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you'll need to provide the basic content (text and images) for your website. I can help with basic content organization and suggestions, but you know your business best! I'll help you organize everything to look great.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do domain names and hosting work?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You'll need to purchase a domain name (your website address, like yourname.com) and hosting (where your website lives online). I'll recommend affordable options based on your needs and help you set everything up. You'll own these accounts and pay for them directly (typically $12-15/year for a domain and $5-10/month for hosting).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I update the website myself after it's built?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! I build websites that are easy to update, and I'll provide basic training on how to make simple changes to your content. For more complex updates, you can either add the monthly maintenance plan or contact me for specific changes as needed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I accept payment via PayPal, Venmo, or direct bank transfer. For all projects, I require a 50% deposit before starting, with the remaining 50% due upon completion before the website goes live.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do we get started?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply fill out the contact form below with some details about your project, and I'll get back to you within 24 hours to schedule a consultation call. Once we've discussed your needs, I'll provide a detailed proposal for your approval.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section-padding bg-primary">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to take your business online?</h2>
+                <p>Let's work together to create a website that grows your Seattle business!</p>
+                <a href="#contact" class="btn btn-light btn-lg btn-pulse">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Updated) -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Let's Build Your <span class="highlight">Website</span></h2>
+                <p class="section-description">Fill out the form below and I'll get back to you within 24 hours.</p>
+            </div>
+            
+            <div class="contact-wrapper" data-aos="fade-up">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Seattle, Washington</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>jacksseattlewebsites@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>(206) 555-1234</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Mon - Fri: 3:30 PM - 8:00 PM</p>
+                            <p>Weekends: 10:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name*</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessName">Business Name*</label>
+                                <input type="text" id="businessName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address*</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number (optional)</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="websitePlan">Website Plan Requested*</label>
+                            <select id="websitePlan" class="form-control" required>
+                                <option value="" selected disabled>Select a plan</option>
+                                <option value="Starter">Starter (1 Page) - $75</option>
+                                <option value="Standard">Standard (2-3 Pages) - $125</option>
+                                <option value="Advanced">Advanced (4-6 Pages) - $200</option>
+                                <option value="Custom">Custom / Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Your Budget / Offer</label>
+                            <input type="text" id="budget" class="form-control" placeholder="e.g., $75, $125, or your custom budget">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Any Notes or Special Requests</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Tell me about your business and what you're looking for in a website"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="consent" class="form-check-input" required>
+                                <label for="consent" class="form-check-label">I consent to having my information stored so Jack can respond to my inquiry.</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section (New) -->
+    <section class="legal-section section-padding-sm bg-dark">
+        <div class="container">
+            <div class="legal-wrapper" data-aos="fade-up">
+                <div class="legal-content">
+                    <h3>Legal Disclaimer</h3>
+                    <p>By using the services of Jack's Seattle Websites, you agree to the following terms:</p>
+                    
+                    <div class="legal-points">
+                        <div class="legal-point">
+                            <h4>Service Agreement</h4>
+                            <p>All website design services are provided as described in the chosen package. Any additional services requested may incur additional fees. A 50% deposit is required to begin work, with the remaining balance due before website launch.</p>
+                        </div>
+                        
+                        <div class="legal-point">
+                            <h4>Content Responsibility</h4>
+                            <p>Clients are responsible for providing and having legal rights to all content (text, images, logos, etc.) used on their website. Jack's Seattle Websites is not liable for any copyright violations or intellectual property issues related to client-provided content.</p>
+                        </div>
+                        
+                        <div class="legal-point">
+                            <h4>Domain & Hosting</h4>
+                            <p>Client is responsible for purchasing and maintaining their own domain name and hosting service. Jack's Seattle Websites will assist with setup but is not responsible for any issues arising from third-party services.</p>
+                        </div>
+                        
+                        <div class="legal-point">
+                            <h4>Limitation of Liability</h4>
+                            <p>Jack's Seattle Websites' total liability is limited to the amount paid for services. Under no circumstances will Jack's Seattle Websites be liable for indirect, incidental, or consequential damages.</p>
+                        </div>
+                    </div>
+                    
+                    <p class="legal-note">This is a simplified version of terms. By engaging our services, you acknowledge having read and agreed to these terms. For a complete agreement, please request our full service agreement before beginning a project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h3 class="logo-text">Jack's <span>Seattle</span> Websites</h3>
+                        <p>Creating affordable, professional websites for small businesses in Seattle.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#pricing">Starter Website ($75)</a></li>
+                            <li><a href="#pricing">Standard Website ($125)</a></li>
+                            <li><a href="#pricing">Advanced Website ($200)</a></li>
+                            <li><a href="#pricing">Monthly Maintenance ($5/mo)</a></li>
+                            <li><a href="#contact">Custom Projects</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to receive tips and updates on web design trends.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit" class="btn btn-sm btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2025 Jack's Seattle Websites. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </footer>    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Preloader -->
@@ -618,13 +972,13 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section (Simplified) -->
     <section id="services" class="services section-padding bg-light">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">My Expertise</span>
-                <h2 class="section-title">Services I <span class="highlight">Offer</span></h2>
-                <p class="section-description">I provide a range of web development services to help your business succeed online.</p>
+                <span class="section-subtitle">What I Offer</span>
+                <h2 class="section-title">My <span class="highlight">Services</span></h2>
+                <p class="section-description">Simple, effective web design solutions for your business needs.</p>
             </div>
             
             <div class="services-grid">
@@ -633,18 +987,205 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Custom Website Design</h3>
-                    <p>Tailored websites designed specifically for your business goals and target audience, with a focus on user experience.</p>
+                    <p>Tailored websites designed specifically for your business goals and target audience.</p>
                 </div>
                 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Responsive Development</h3>
-                    <p>Mobile-first websites that look and function perfectly on all devices, from smartphones to large desktop screens.</p>
+                    <h3>Mobile-First Design</h3>
+                    <p>Websites that look and function perfectly on all devices, from smartphones to desktops.</p>
                 </div>
                 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Basics</h3>
+                    <p>Simple search engine optimization to help your website be found by local customers.</p>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Ongoing Support</h3>
+                    <p>Optional monthly maintenance to keep your site updated, secure, and running smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (Updated) -->
+    <section id="pricing" class="pricing section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Simple & Transparent</span>
+                <h2 class="section-title">My <span class="highlight">Pricing</span></h2>
+                <p class="section-description">Affordable website packages for Seattle small businesses.</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- Starter Package -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Starter</h3>
+                        <p class="pricing-description">1 Page Website</p>
+                    </div>
+                    
+                    <div class="pricing-card-body">
+                        <div class="price-tag">
+                            <span class="price">$75</span>
+                            <span class="period">one-time</span>
+                        </div>
+                        
+                        <p class="pricing-subtitle">Perfect for a simple landing page with your contact info, location, and hours.</p>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 1 page website</li>
+                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
+                            <li><i class="fas fa-check"></i> Contact form</li>
+                            <li><i class="fas fa-check"></i> Business hours</li>
+                            <li><i class="fas fa-check"></i> Location map</li>
+                            <li><i class="fas fa-check"></i> Domain & hosting setup*</li>
+                        </ul>
+                        
+                        <div class="pricing-note">*Domain & hosting fees not included</div>
+                    </div>
+                    
+                    <div class="pricing-card-footer">
+                        <a href="#contact" class="btn btn-outline-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Standard Package -->
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-badge">Popular</div>
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Standard</h3>
+                        <p class="pricing-description">2-3 Page Website</p>
+                    </div>
+                    
+                    <div class="pricing-card-body">
+                        <div class="price-tag">
+                            <span class="price">$125</span>
+                            <span class="period">one-time</span>
+                        </div>
+                        
+                        <p class="pricing-subtitle">Great for small businesses that want a Home page, About page, and Contact page.</p>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 2-3 page website</li>
+                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
+                            <li><i class="fas fa-check"></i> Contact form</li>
+                            <li><i class="fas fa-check"></i> About/Team page</li>
+                            <li><i class="fas fa-check"></i> Google Maps integration</li>
+                            <li><i class="fas fa-check"></i> Google Analytics setup</li>
+                            <li><i class="fas fa-check"></i> Social media links</li>
+                        </ul>
+                        
+                        <div class="pricing-note">*Domain & hosting fees not included</div>
+                    </div>
+                    
+                    <div class="pricing-card-footer">
+                        <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Advanced Package -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Advanced</h3>
+                        <p class="pricing-description">4-6 Page Website</p>
+                    </div>
+                    
+                    <div class="pricing-card-body">
+                        <div class="price-tag">
+                            <span class="price">$200</span>
+                            <span class="period">one-time</span>
+                        </div>
+                        
+                        <p class="pricing-subtitle">For businesses that want to showcase services, team, gallery, etc.</p>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 4-6 page website</li>
+                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
+                            <li><i class="fas fa-check"></i> Enhanced contact form</li>
+                            <li><i class="fas fa-check"></i> Services/Products display</li>
+                            <li><i class="fas fa-check"></i> Photo gallery/portfolio</li>
+                            <li><i class="fas fa-check"></i> Testimonials section</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO setup</li>
+                        </ul>
+                        
+                        <div class="pricing-note">*Domain & hosting fees not included</div>
+                    </div>
+                    
+                    <div class="pricing-card-footer">
+                        <a href="#contact" class="btn btn-outline-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Monthly Maintenance Box -->
+            <div class="maintenance-box" data-aos="fade-up">
+                <div class="maintenance-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="maintenance-content">
+                    <h3>Monthly Maintenance (Optional)</h3>
+                    <div class="maintenance-price">
+                        <span class="price">$5</span>
+                        <span class="period">per month</span>
+                    </div>
+                    <p>Add to any package for ongoing support and updates</p>
+                    
+                    <div class="maintenance-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Small edits or updates anytime</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Site uptime monitoring</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Quick bug fixes</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Priority response</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Domain & Hosting Note -->
+            <div class="domain-hosting-note" data-aos="fade-up">
+                <div class="note-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="note-content">
+                    <h4>About Domain & Hosting</h4>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> You will own your domain name (typically $12-15/year from GoDaddy or Namecheap)</li>
+                        <li><i class="fas fa-angle-right"></i> You will pay for hosting directly (typically $5-10/month)</li>
+                        <li><i class="fas fa-angle-right"></i> I'll help you set everything up and manage your site</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">
                         <i class="fas fa-search"></i>
                     </div>
