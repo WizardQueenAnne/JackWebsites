@@ -1,7 +1,7 @@
 /*
  * JackWeb - Portfolio Website
  * Author: Jack
- * Version: 1.0
+ * Version: 2.0
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-// Portfolio Modal
+    // Portfolio Modal
     const modalLinks = document.querySelectorAll('.portfolio-link');
     const modals = document.querySelectorAll('.portfolio-modal');
     const closeButtons = document.querySelectorAll('.modal-close');
@@ -490,6 +490,120 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Live Chat Widget
+    const chatButton = document.getElementById('chatButton');
+    const chatBox = document.getElementById('chatBox');
+    const chatClose = document.getElementById('chatClose');
+    const chatMessages = document.getElementById('chatMessages');
+    const messageInput = document.getElementById('messageInput');
+    const sendMessage = document.getElementById('sendMessage');
+    
+    // Toggle chat box
+    chatButton.addEventListener('click', () => {
+        chatBox.classList.toggle('active');
+        chatButton.style.display = 'none';
+    });
+    
+    chatClose.addEventListener('click', () => {
+        chatBox.classList.remove('active');
+        chatButton.style.display = 'flex';
+    });
+    
+    // Send message
+    function sendUserMessage() {
+        const message = messageInput.value.trim();
+        
+        if (message !== '') {
+            // Add user message
+            addMessage('sent', message);
+            
+            // Clear input
+            messageInput.value = '';
+            
+            // Simulate bot response after delay
+            setTimeout(() => {
+                let botResponse;
+                
+                // Simple bot responses based on keywords
+                if (message.toLowerCase().includes('pricing') || message.toLowerCase().includes('cost') || message.toLowerCase().includes('price')) {
+                    botResponse = "My packages start at $150 for a basic website. Check out the pricing section for more details, or let me know your specific needs for a custom quote!";
+                } else if (message.toLowerCase().includes('time') || message.toLowerCase().includes('how long') || message.toLowerCase().includes('deadline')) {
+                    botResponse = "Most projects are completed within 1-2 weeks, depending on complexity. I always aim to deliver on time without compromising quality!";
+                } else if (message.toLowerCase().includes('contact') || message.toLowerCase().includes('email') || message.toLowerCase().includes('phone')) {
+                    botResponse = "You can reach me at jack@jackwebsites.com or call/text me at (206) 555-1234. I'm usually available on weekdays after 3:30 PM and weekends all day.";
+                } else {
+                    botResponse = "Thanks for your message! I'll get back to you shortly. In the meantime, feel free to check out my portfolio or pricing packages.";
+                }
+                
+                addMessage('received', botResponse);
+                
+                // Scroll to the bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    }
+    
+    // Add a message to the chat
+    function addMessage(type, content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        
+        const messageContent = document.createElement('div');
+        messageContent.className = 'message-content';
+        messageContent.innerHTML = `<p>${content}</p>`;
+        
+        const messageTime = document.createElement('span');
+        messageTime.className = 'message-time';
+        
+        // Get current time
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        messageTime.textContent = `${hours}:${minutes}`;
+        
+        messageDiv.appendChild(messageContent);
+        messageDiv.appendChild(messageTime);
+        
+        chatMessages.appendChild(messageDiv);
+        
+        // Scroll to the bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Send message when clicking send button
+    sendMessage.addEventListener('click', sendUserMessage);
+    
+    // Send message when pressing Enter
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendUserMessage();
+        }
+    });
+
+    // Cookie Consent
+    const cookieConsent = document.getElementById('cookieConsent');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    // Check if user has already made a choice
+    if (!localStorage.getItem('cookieConsent')) {
+        // Show cookie consent after 2 seconds
+        setTimeout(() => {
+            cookieConsent.classList.add('active');
+        }, 2000);
+    }
+    
+    cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieConsent.classList.remove('active');
+    });
+    
+    cookieDecline.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieConsent.classList.remove('active');
+    });
+
     // Typing animation effect for hero title (using JS, not a library)
     function typeWriterEffect() {
         const heroTitle = document.querySelector('.hero-title');
@@ -546,10 +660,63 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Only run the typing effect once when the page loads
     setTimeout(typeWriterEffect, 1000);
-});
 
-// Add CSS rule for particles (added via JS for clean HTML)
-document.addEventListener('DOMContentLoaded', function() {
+    // Dark Mode Toggle (if supported by browser)
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const body = document.body;
+    
+    if (prefersDarkScheme.matches) {
+        body.classList.add('dark-mode-support');
+    }
+    
+    // Theme preference detection
+    const colorTheme = localStorage.getItem('theme');
+    
+    if (colorTheme === 'dark') {
+        body.classList.add('dark-mode-support');
+    } else if (colorTheme === 'light') {
+        body.classList.remove('dark-mode-support');
+    }
+
+    // Add animated effect to action buttons
+    document.querySelectorAll('.cta .btn').forEach(btn => {
+        btn.classList.add('btn-pulse');
+    });
+
+    // Add interactive touch effects for mobile users
+    document.querySelectorAll('.btn, .portfolio-item, .service-card, .about-card, .pricing-card, .faq-question, .social-link').forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        element.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    });
+
+    // Function to add or remove animation classes
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                // Add animation class based on data attribute
+                const animation = element.getAttribute('data-animation') || 'fadeInUp';
+                element.classList.add(`animate-${animation}`);
+            }
+        });
+    }
+    
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Run once on page load
+    animateOnScroll();
+
+    // Add CSS rule for particles (added via JS for clean HTML)
     const style = document.createElement('style');
     style.textContent = `
         .particle {
@@ -575,4 +742,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
+
+    // Initialize all tooltips (if any)
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const tooltipText = this.getAttribute('data-tooltip');
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = tooltipText;
+            document.body.appendChild(tooltip);
+            
+            // Position the tooltip above the element
+            const rect = this.getBoundingClientRect();
+            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            
+            // Add active class to show with animation
+            setTimeout(() => {
+                tooltip.classList.add('active');
+            }, 10);
+            
+            // Remove tooltip on mouseleave
+            this.addEventListener('mouseleave', function handler() {
+                tooltip.classList.remove('active');
+                
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 300);
+                
+                this.removeEventListener('mouseleave', handler);
+            });
+        });
+    });
+
+    console.log('JackWeb - Website loaded successfully!');
 });
