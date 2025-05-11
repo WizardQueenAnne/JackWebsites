@@ -331,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let valid = true;
             const name = document.getElementById('name');
             const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
             const message = document.getElementById('message');
             
             if (name.value.trim() === '') {
@@ -355,31 +356,79 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (valid) {
-                // Simulate form submission - replace with actual submission code
+                // Prepare the form data
+                const formData = {
+                    name: name.value.trim(),
+                    email: email.value.trim(),
+                    subject: subject.value.trim(),
+                    message: message.value.trim()
+                };
+                
+                // Disable submit button and show loading state
                 const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
                 
-                setTimeout(() => {
-                    // Reset form
-                    contactForm.reset();
+                // Send form data to backend API
+                fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'success-message';
+                        successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ' + (data.message || 'Your message has been sent successfully!');
+                        
+                        contactForm.appendChild(successMessage);
+                        
+                        // Remove success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.remove();
+                        }, 5000);
+                    } else {
+                        // Show error message
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'error-message';
+                        errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (data.error || 'Something went wrong. Please try again later.');
+                        
+                        contactForm.appendChild(errorMessage);
+                        
+                        // Remove error message after 5 seconds
+                        setTimeout(() => {
+                            errorMessage.remove();
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                     
-                    // Show success message
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Your message has been sent successfully!';
+                    // Show error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please try again later.';
                     
-                    contactForm.appendChild(successMessage);
+                    contactForm.appendChild(errorMessage);
                     
+                    // Remove error message after 5 seconds
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 5000);
+                })
+                .finally(() => {
                     // Reset button
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Send Message';
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                }, 2000);
+                    submitButton.textContent = originalButtonText;
+                });
             }
         });
     }
@@ -401,29 +450,72 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = this.querySelector('button');
             
             if (emailInput.value.trim() !== '' && isValidEmail(emailInput.value)) {
+                const email = emailInput.value.trim();
+                
+                // Disable button
                 submitButton.disabled = true;
+                const originalText = submitButton.textContent;
                 submitButton.textContent = 'Subscribing...';
                 
-                setTimeout(() => {
-                    // Reset form
-                    this.reset();
+                // Send to backend API
+                fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Reset form
+                        this.reset();
+                        
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'success-message';
+                        successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ' + (data.message || 'Thank you for subscribing!');
+                        
+                        this.appendChild(successMessage);
+                        
+                        // Remove success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.remove();
+                        }, 5000);
+                    } else {
+                        // Show error message
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'error-message';
+                        errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (data.error || 'Something went wrong. Please try again later.');
+                        
+                        this.appendChild(errorMessage);
+                        
+                        // Remove error message after 5 seconds
+                        setTimeout(() => {
+                            errorMessage.remove();
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                     
-                    // Show success message
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for subscribing!';
+                    // Show error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please try again later.';
                     
-                    this.appendChild(successMessage);
+                    this.appendChild(errorMessage);
                     
+                    // Remove error message after 5 seconds
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 5000);
+                })
+                .finally(() => {
                     // Reset button
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Subscribe';
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                }, 1500);
+                    submitButton.textContent = originalText;
+                });
             } else {
                 emailInput.classList.add('is-invalid');
                 
