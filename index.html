@@ -187,34 +187,57 @@
                     <form id="contactForm" class="contact-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">Your Name</label>
+                                <label for="name">Your Name*</label>
                                 <input type="text" id="name" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="email">Email Address</label>
+                                <label for="businessName">Business Name*</label>
+                                <input type="text" id="businessName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address*</label>
                                 <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number (optional)</label>
+                                <input type="tel" id="phone" class="form-control">
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <label for="websitePlan">Website Plan Requested*</label>
+                            <select id="websitePlan" class="form-control" required>
+                                <option value="" selected disabled>Select a plan</option>
+                                <option value="Starter">Starter (1 Page) - $75</option>
+                                <option value="Standard">Standard (2-3 Pages) - $125</option>
+                                <option value="Advanced">Advanced (4-6 Pages) - $200</option>
+                                <option value="Custom">Custom / Other</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                            <label for="budget">Your Budget / Offer</label>
+                            <input type="text" id="budget" class="form-control" placeholder="e.g., $75, $125, or your custom budget">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Any Notes or Special Requests</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Tell me about your business and what you're looking for in a website"></textarea>
                         </div>
                         
                         <div class="form-group">
                             <div class="form-check">
                                 <input type="checkbox" id="consent" class="form-check-input" required>
-                                <label for="consent" class="form-check-label">I consent to having this website store my submitted information so they can respond to my inquiry.</label>
+                                <label for="consent" class="form-check-label">I consent to having my information stored so Jack can respond to my inquiry.</label>
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary">Send Request</button>
                     </form>
                 </div>
             </div>
@@ -500,7 +523,7 @@
             <div class="section-header" data-aos="fade-up">
                 <span class="section-subtitle">Affordable Options</span>
                 <h2 class="section-title">Website <span class="highlight">Packages</span></h2>
-                <p class="section-description">Choose the perfect package for your business needs and budget.</p>
+                <p class="section-description">Simple, straightforward pricing for your business website needs.</p>
             </div>
             
             <div class="pricing-toggle" data-aos="fade-up">
@@ -514,78 +537,101 @@
             
             <div class="pricing-cards">
                 <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-badge">Popular</div>
+                    <div class="card-badge">Simple</div>
                     <h3>Starter Package</h3>
                     <div class="price-container">
                         <div class="price-option active" id="starter-onetime">
-                            <div class="price">$150</div>
+                            <div class="price">$75</div>
                             <div class="price-period">one-time payment</div>
                         </div>
                         <div class="price-option" id="starter-monthly">
-                            <div class="price">$15</div>
-                            <div class="price-period">per month</div>
+                            <div class="price">$75</div>
+                            <div class="price-period">+ $5/month maintenance</div>
                         </div>
                     </div>
-                    <p>Perfect for businesses just getting started online.</p>
+                    <p>Perfect for a simple landing page with your contact info, location, and hours.</p>
                     <ul class="features-list">
-                        <li>Professional 1-5 page website</li>
+                        <li>1 page website</li>
                         <li>Mobile-responsive design</li>
                         <li>Contact form</li>
-                        <li>Basic SEO setup</li>
-                        <li>Social media links</li>
-                        <li>Free domain setup assistance</li>
-                        <li class="not-included">Google Maps integration</li>
-                        <li class="not-included">Advanced SEO optimization</li>
+                        <li>Business hours</li>
+                        <li>Location map</li>
+                        <li>Domain & hosting setup (cost not included)</li>
+                        <li class="not-included">Additional pages</li>
+                        <li class="not-included">Monthly maintenance</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-badge">Best Value</div>
+                    <div class="card-badge">Most Popular</div>
                     <h3>Standard Package</h3>
                     <div class="price-container">
                         <div class="price-option active" id="standard-onetime">
-                            <div class="price">$300</div>
+                            <div class="price">$125</div>
                             <div class="price-period">one-time payment</div>
                         </div>
                         <div class="price-option" id="standard-monthly">
-                            <div class="price">$30</div>
-                            <div class="price-period">per month</div>
+                            <div class="price">$125</div>
+                            <div class="price-period">+ $5/month maintenance</div>
                         </div>
                     </div>
-                    <p>For businesses wanting more features and pages.</p>
+                    <p>Great for small businesses that want a Home page, About page, and Contact page.</p>
                     <ul class="features-list">
-                        <li>Professional up to 10-page website</li>
+                        <li>2-3 page website</li>
                         <li>Mobile-responsive design</li>
                         <li>Contact form with validation</li>
-                        <li>Advanced SEO optimization</li>
+                        <li>About/Team page</li>
                         <li>Google Maps integration</li>
-                        <li>Image gallery/portfolio</li>
                         <li>Google Analytics setup</li>
-                        <li>Basic content updates for 30 days</li>
+                        <li>Social media links</li>
+                        <li class="not-included">Monthly maintenance</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="pricing-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-badge">Custom</div>
-                    <h3>Premium Package</h3>
+                    <div class="card-badge">Advanced</div>
+                    <h3>Advanced Package</h3>
                     <div class="price-container">
-                        <div class="price">Custom</div>
-                        <div class="price-period">tailored to your needs</div>
+                        <div class="price-option active" id="advanced-onetime">
+                            <div class="price">$200</div>
+                            <div class="price-period">one-time payment</div>
+                        </div>
+                        <div class="price-option" id="advanced-monthly">
+                            <div class="price">$200</div>
+                            <div class="price-period">+ $5/month maintenance</div>
+                        </div>
                     </div>
-                    <p>For businesses with specialized requirements.</p>
+                    <p>For businesses that want to showcase services, team, gallery, etc.</p>
                     <ul class="features-list">
-                        <li>Everything in Standard Package</li>
-                        <li>Unlimited pages</li>
-                        <li>Premium design features</li>
-                        <li>Custom functionality</li>
-                        <li>Content writing assistance</li>
-                        <li>Extended maintenance (3 months)</li>
-                        <li>Priority support</li>
-                        <li>Free logo design</li>
+                        <li>4-6 page website</li>
+                        <li>Mobile-responsive design</li>
+                        <li>Enhanced contact form</li>
+                        <li>Services/Products display</li>
+                        <li>Photo gallery/portfolio</li>
+                        <li>Testimonials section</li>
+                        <li>Advanced SEO optimization</li>
+                        <li class="not-included">Monthly maintenance</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="maintenance-info" data-aos="fade-up" data-aos-delay="200">
+                <h3>🔧 Monthly Maintenance (Optional)</h3>
+                <p>Add <strong>$5/month</strong> to any package for ongoing support</p>
+                <ul class="maintenance-features">
+                    <li><i class="fas fa-check-circle"></i> Small edits or updates anytime</li>
+                    <li><i class="fas fa-check-circle"></i> Site uptime and error monitoring</li>
+                    <li><i class="fas fa-check-circle"></i> Quick bug fixes</li>
+                    <li><i class="fas fa-check-circle"></i> Priority response to any issues</li>
+                </ul>
+                <div class="domain-hosting-note">
+                    <h4>🌐 Domain & Hosting</h4>
+                    <p>You will own the domain (GoDaddy or Namecheap)</p>
+                    <p>You will also pay for hosting (I'll set it up for you)</p>
+                    <p>I will manage your site and updates</p>
                 </div>
             </div>
         </div>
