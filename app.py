@@ -14,9 +14,9 @@ logger = logging.getLogger(__name__)
 # Email configuration (update with your email settings)
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
-EMAIL_USER = os.environ.get('EMAIL_USER', 'your-email@gmail.com')
+EMAIL_USER = os.environ.get('EMAIL_USER', 'jacksseattlewebsites@gmail.com')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')  # Set as env variable in Render
-EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT', 'your-email@gmail.com')
+EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT', 'jacksseattlewebsites@gmail.com')
 
 @app.route('/', defaults={'path': 'index.html'})
 @app.route('/<path:path>')
@@ -32,31 +32,38 @@ def contact():
     try:
         data = request.json
         name = data.get('name', '')
+        business_name = data.get('businessName', '')
         email = data.get('email', '')
-        subject = data.get('subject', '')
+        phone = data.get('phone', 'Not provided')
+        website_plan = data.get('websitePlan', '')
+        budget = data.get('budget', 'Not specified')
         message = data.get('message', '')
         
         # Log the submission (helpful for debugging)
-        logger.info(f"Contact form submission: {name} ({email})")
+        logger.info(f"Contact form submission: {name} ({business_name})")
         
         # Simple validation
-        if not all([name, email, message]):
+        if not all([name, email, business_name]):
             return jsonify({'success': False, 'error': 'Missing required fields'}), 400
         
         # Prepare email
         msg = MIMEMultipart()
         msg['From'] = EMAIL_USER
         msg['To'] = EMAIL_RECIPIENT
-        msg['Subject'] = f"Website Contact: {subject or 'New message from JackWebsites'}"
+        msg['Subject'] = f"Website Inquiry: {website_plan} Package from {business_name}"
         
         email_body = f"""
-        New contact form submission from JackWebsites:
+        New website inquiry from Jack's Seattle Websites:
         
         Name: {name}
+        Business Name: {business_name}
         Email: {email}
-        Subject: {subject}
+        Phone: {phone}
         
-        Message:
+        Website Plan: {website_plan}
+        Budget/Offer: {budget}
+        
+        Notes/Requests:
         {message}
         """
         
@@ -69,12 +76,12 @@ def contact():
                 server.login(EMAIL_USER, EMAIL_PASSWORD)
                 server.send_message(msg)
                 logger.info(f"Email sent successfully to {EMAIL_RECIPIENT}")
-            return jsonify({'success': True, 'message': 'Message sent successfully!'}), 200
+            return jsonify({'success': True, 'message': 'Thanks! I\'ll get back to you shortly.'}), 200
         else:
             # If email not configured, log the message but return success
             # This is useful during development or if you want to collect messages without email
             logger.warning("Email not sent - EMAIL_PASSWORD not configured")
-            return jsonify({'success': True, 'message': 'Message received (email delivery not configured)'}), 200
+            return jsonify({'success': True, 'message': 'Thanks! I\'ll get back to you shortly.'}), 200
             
     except Exception as e:
         logger.error(f"Error processing contact form: {str(e)}")
