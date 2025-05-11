@@ -1,0 +1,12 @@
+# This is a static website that doesn't require Python dependencies.
+# However, if you want to serve it locally, you could use:
+# 
+# http-server==14.1.1  # Node.js based HTTP server (requires npm install -g http-server)
+# OR
+# python -m http.server  # Python's built-in server (no additional dependencies needed)
+#
+# For deployment platforms that require a requirements.txt file, leave this blank
+# or uncomment one of the following if using a Python-based server:
+#
+# Flask==2.2.3
+# gunicorn==20.1.0
