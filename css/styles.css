@@ -149,16 +149,25 @@
 # Base Styles
 --------------------------------------------------------------*/
 :root {
-    /* Main colors */
-    --primary-color: #4361ee;
-    --primary-dark: #3a56d4;
-    --primary-light: #eef2ff;
-    --secondary-color: #2ec4b6;
-    --dark-color: #1a1a2e;
+    /* Main colors - Updated vibrant theme */
+    --primary-color: #3a86ff;
+    --primary-dark: #2667d9;
+    --primary-light: #e7efff;
+    --secondary-color: #ff006e;
+    --secondary-light: #ffe0ee;
+    --accent-color: #8338ec;
+    --accent-light: #f0e5ff;
+    --success-color: #38b000;
+    --dark-color: #14213d;
     --light-color: #ffffff;
     --grey-color: #f8f9fa;
+    --grey-dark: #e9ecef;
     --text-color: #252525;
     --text-muted: #6c757d;
+    
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     
     /* Fonts */
     --body-font: 'Poppins', sans-serif;
@@ -166,6 +175,11 @@
     
     /* Transitions */
     --transition: all 0.3s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -310,40 +324,89 @@ ul {
 --------------------------------------------------------------*/
 .btn {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--light-color);
     font-size: 1.6rem;
     font-weight: 600;
     padding: 1.2rem 2.5rem;
-    border-radius: 5px;
-    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    border: 2px solid transparent;
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.btn:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
     color: var(--light-color);
-    transform: translateY(-3px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
 }
 
-.btn-outline {
+.btn-primary:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    color: var(--light-color);
+}
+
+.btn-secondary {
+    background: var(--gradient-secondary);
+    color: var(--light-color);
+    border-color: transparent;
+}
+
+.btn-secondary:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    color: var(--light-color);
+}
+
+.btn-outline-primary {
     background-color: transparent;
     color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-.btn-outline:hover {
+.btn-outline-primary:hover {
     background-color: var(--primary-color);
     color: var(--light-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
 }
 
 .btn-light {
     background-color: var(--light-color);
-    color: var(--primary-color);
+    color: var(--dark-color);
     border-color: var(--light-color);
 }
 
@@ -351,11 +414,28 @@ ul {
     background-color: rgba(255, 255, 255, 0.9);
     border-color: rgba(255, 255, 255, 0.9);
     color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .btn-sm {
     padding: 0.8rem 1.5rem;
     font-size: 1.4rem;
+}
+
+.btn-lg {
+    padding: 1.5rem 3rem;
+    font-size: 1.8rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .btn-pulse {
@@ -365,15 +445,15 @@ ul {
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-sm);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(50, 50, 93, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-md);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-sm);
     }
 }
 
@@ -386,13 +466,15 @@ ul {
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: var(--light-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .header.sticky {
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .navbar {
@@ -417,10 +499,26 @@ ul {
     font-size: 2.4rem;
     font-weight: 700;
     color: var(--dark-color);
+    position: relative;
+    z-index: 1;
 }
 
 .logo-text .highlight {
     color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+.logo-text .highlight::after {
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 30%;
+    background-color: var(--secondary-light);
+    bottom: 0;
+    left: -5%;
+    z-index: -1;
+    transform: rotate(-2deg);
 }
 
 .nav-container {
@@ -434,7 +532,7 @@ ul {
 }
 
 .nav-item {
-    margin-left: 2rem;
+    margin-left: 2.5rem;
 }
 
 .nav-link {
@@ -490,7 +588,7 @@ ul {
 .hero {
     padding-top: 12rem;
     padding-bottom: 10rem;
-    background-color: var(--primary-light);
+    background: linear-gradient(to bottom right, var(--primary-light), var(--accent-light));
     position: relative;
     overflow: hidden;
 }
@@ -520,24 +618,46 @@ ul {
 
 .badge {
     display: inline-block;
-    background-color: rgba(67, 97, 238, 0.1);
-    color: var(--primary-color);
+    background-color: var(--secondary-light);
+    color: var(--secondary-color);
     font-size: 1.4rem;
     font-weight: 600;
     padding: 0.8rem 1.5rem;
     border-radius: 30px;
     margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .hero-title {
     margin-bottom: 2rem;
     font-size: 4.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title .highlight {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 30%;
+    background-color: var(--secondary-light);
+    bottom: 5px;
+    left: -5%;
+    z-index: -1;
+    transform: rotate(-1deg);
 }
 
 .hero-description {
     font-size: 1.8rem;
     color: var(--text-muted);
     margin-bottom: 3rem;
+    max-width: 50rem;
 }
 
 .hero-cta {
@@ -551,6 +671,12 @@ ul {
     flex-wrap: wrap;
     gap: 3rem;
     margin-top: 3rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .stat {
@@ -567,6 +693,7 @@ ul {
 .stat-text {
     font-size: 1.4rem;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 .hero-image {
@@ -578,6 +705,7 @@ ul {
 
 .floating-image {
     animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
 @keyframes float {
@@ -589,15 +717,27 @@ ul {
     }
 }
 
-.hero-shape {
+.hero-shape-1 {
     position: absolute;
-    width: 40rem;
-    height: 40rem;
+    width: 30rem;
+    height: 30rem;
     border-radius: 50%;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     opacity: 0.1;
     top: -10rem;
     right: -15rem;
+    z-index: -1;
+}
+
+.hero-shape-2 {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    opacity: 0.1;
+    bottom: -10rem;
+    left: 10%;
     z-index: -1;
 }
 
