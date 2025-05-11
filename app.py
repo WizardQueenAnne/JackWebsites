@@ -4,6 +4,10 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__, static_folder='.')
 
@@ -15,7 +19,7 @@ logger = logging.getLogger(__name__)
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
 EMAIL_USER = os.environ.get('EMAIL_USER', 'jacksseattlewebsites@gmail.com')
-EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')  # Set as env variable in Render
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')  # Set as env variable in production
 EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT', 'jacksseattlewebsites@gmail.com')
 
 @app.route('/', defaults={'path': 'index.html'})
@@ -108,6 +112,6 @@ def newsletter():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Get port from environment variable or use 10000 as default
-    port = int(os.environ.get('PORT', 10000))
-    app.run(host='0.0.0.0', port=port)
+    # Get port from environment variable or use 5000 as default
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=(os.environ.get('FLASK_ENV') == 'development'))
