@@ -1,4 +1,211 @@
-<!DOCTYPE html>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">
+                    <span class="logo-text">Jack's <span class="highlight">Seattle</span> Websites</span>
+                </a>
+                
+                <div class="nav-container">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-sm btn-secondary header-cta">Get Started</a>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-particles"></div>
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up" data-aos-delay="200">
+                    <div class="badge"><i class="fas fa-map-marker-alt"></i> Seattle-based Student Developer</div>
+                    <h1 class="hero-title">Affordable Websites for <span class="highlight">Seattle</span> Small Businesses</h1>
+                    <p class="hero-description">Hi! I'm Jack, a 15-year-old student developer offering professional website design services at budget-friendly prices. I help Seattle's small businesses establish a strong online presence without breaking the bank.</p>
+                    
+                    <div class="hero-cta">
+                        <a href="#portfolio" class="btn btn-primary">See My Work</a>
+                        <a href="#pricing" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-text">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="100">0</span><span>%</span>
+                            <span class="stat-text">Client Satisfaction</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="7">0</span>
+                            <span class="stat-text">Day Average Delivery</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                    <div class="floating-image">
+                        <img src="images/hero-illustration.svg" alt="Web Design Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,224C672,235,768,245,864,240C960,235,1056,213,1152,202.7C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section (New) -->
+    <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Featured Work</span>
+                <h2 class="section-title">Recent <span class="highlight">Projects</span></h2>
+                <p class="section-description">Check out some examples of websites I've created for local businesses.</p>
+            </div>
+            
+            <div class="portfolio-showcase" data-aos="fade-up">
+                <!-- Large Featured Project -->
+                <div class="featured-project">
+                    <div class="project-image rounded shadow">
+                        <img src="images/portfolio-featured.jpg" alt="Seattle Cafe Website">
+                        <div class="project-overlay">
+                            <div class="project-details">
+                                <h3>Seattle Cafe</h3>
+                                <p class="project-category">Restaurant Website</p>
+                                <a href="#" class="btn btn-sm btn-light view-project">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Seattle Cafe Website</h3>
+                        <p>A clean, modern website for a local coffee shop featuring their menu, location information, and an online ordering system. The design focuses on showcasing the cafe's warm atmosphere and artisanal coffee offerings.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> Mobile-responsive design</li>
+                            <li><i class="fas fa-check-circle"></i> Online ordering system</li>
+                            <li><i class="fas fa-check-circle"></i> Google Maps integration</li>
+                            <li><i class="fas fa-check-circle"></i> Photo gallery</li>
+                        </ul>
+                        <div class="project-link">
+                            <a href="#" class="btn btn-outline-primary">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Grid for 3 more projects -->
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-img rounded shadow">
+                            <img src="images/portfolio-1.jpg" alt="Neighborhood Books Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <h3>Neighborhood Books</h3>
+                                    <p>A cozy website for an independent bookstore</p>
+                                    <a href="#" class="portfolio-link" data-modal="modal-1">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-img rounded shadow">
+                            <img src="images/portfolio-2.jpg" alt="Bloom Florist Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <h3>Bloom Florist</h3>
+                                    <p>An elegant website for a local florist</p>
+                                    <a href="#" class="portfolio-link" data-modal="modal-2">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="portfolio-img rounded shadow">
+                            <img src="images/portfolio-3.jpg" alt="Green Thumb Landscaping Website">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-overlay-content">
+                                    <h3>Green Thumb Landscaping</h3>
+                                    <p>A fresh website for a landscaping company</p>
+                                    <a href="#" class="portfolio-link" data-modal="modal-3">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- View More Button -->
+                <div class="view-more text-center" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#contact" class="btn btn-primary">Want Something Similar?</a>
+                </div>
+            </div>
+        </div>
+    </section><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack's Seattle Websites | Affordable Websites for Small Businesses</title>
+    <meta name="description" content="Affordable websites for Seattle small businesses from a student developer. Simple pricing, professional results. Packages starting at just $75.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
