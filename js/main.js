@@ -448,40 +448,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Send message function
-// Send message function - UPDATED VERSION
-function sendUserMessage() {
-    const message = messageInput.value.trim();
-    
-    if (message !== '') {
-        // Add user message
-        addMessage('sent', message);
+    function sendUserMessage() {
+        const message = messageInput.value.trim();
         
-        // Clear input
-        messageInput.value = '';
-        
-        // Display typing indicator
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message received typing-indicator';
-        typingIndicator.innerHTML = '<div class="message-content"><p>Typing<span>.</span><span>.</span><span>.</span></p></div>';
-        chatMessages.appendChild(typingIndicator);
-        
-        // Scroll to the bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        // Get appropriate response
-        const botResponse = getChatResponse(message);
-        
-        // Remove typing indicator and show real response after a short delay
-        setTimeout(() => {
-            chatMessages.removeChild(typingIndicator);
-            addMessage('received', botResponse);
-            // Scroll to the bottom again
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            // Save messages to localStorage
-            saveChatMessages();
-        }, 1500);
-    }
-}
+        if (message !== '') {
+            // Add user message
+            addMessage('sent', message);
+            
+            // Clear input
+            messageInput.value = '';
             
             // Display typing indicator
             const typingIndicator = document.createElement('div');
@@ -506,41 +481,6 @@ function sendUserMessage() {
             }, 1500);
         }
     }
-    
-// Send message function
-function sendUserMessage() {
-    const message = messageInput.value.trim();
-    
-    if (message !== '') {
-        // Add user message
-        addMessage('sent', message);
-        
-        // Clear input
-        messageInput.value = '';
-        
-        // Display typing indicator
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message received typing-indicator';
-        typingIndicator.innerHTML = '<div class="message-content"><p>Typing<span>.</span><span>.</span><span>.</span></p></div>';
-        chatMessages.appendChild(typingIndicator);
-        
-        // Scroll to the bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        // Get appropriate response
-        const botResponse = getChatResponse(message);
-        
-        // Remove typing indicator and show real response after a short delay
-        setTimeout(() => {
-            chatMessages.removeChild(typingIndicator);
-            addMessage('received', botResponse);
-            // Scroll to the bottom again
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            // Save messages to localStorage
-            saveChatMessages();
-        }, 1500);
-    }
-}
     
     // Add a message to the chat
     function addMessage(type, content) {
@@ -743,38 +683,4 @@ function sendUserMessage() {
     document.head.appendChild(style);
     
     console.log("Jack's Seattle Websites - Website loaded successfully!");
-// Send message function
-function sendUserMessage() {
-    const message = messageInput.value.trim();
-    
-    if (message !== '') {
-        // Add user message
-        addMessage('sent', message);
-        
-        // Clear input
-        messageInput.value = '';
-        
-        // Display typing indicator
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message received typing-indicator';
-        typingIndicator.innerHTML = '<div class="message-content"><p>Typing<span>.</span><span>.</span><span>.</span></p></div>';
-        chatMessages.appendChild(typingIndicator);
-        
-        // Scroll to the bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        // Get appropriate response
-        const botResponse = getChatResponse(message);
-        
-        // Remove typing indicator and show real response after a short delay
-        setTimeout(() => {
-            chatMessages.removeChild(typingIndicator);
-            addMessage('received', botResponse);
-            // Scroll to the bottom again
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            // Save messages to localStorage
-            saveChatMessages();
-        }, 1500);
-    }
-}
 });
