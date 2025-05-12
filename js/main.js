@@ -1,7 +1,6 @@
-/*
- * Jack's Seattle Websites - Professional Web Design
- * Author: Jack
- * Version: 1.0
+/* 
+ * Enhanced Chat JavaScript Code
+ * Replace the entire content of your js/main.js file with this complete code
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-hamburger.addEventListener('click', function() {
+    hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
@@ -121,139 +120,57 @@ hamburger.addEventListener('click', function() {
         });
     });
 
-    // Contact Form Validation and Submission
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            let valid = true;
-            const name = document.getElementById('name');
-            const businessName = document.getElementById('businessName');
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const websitePlan = document.getElementById('websitePlan');
-            const rushDelivery = document.getElementById('rushDelivery');
-            const budget = document.getElementById('budget');
-            const message = document.getElementById('message');
-            
-            if (name.value.trim() === '') {
-                valid = false;
-                name.classList.add('is-invalid');
-            } else {
-                name.classList.remove('is-invalid');
-            }
-            
-            if (businessName.value.trim() === '') {
-                valid = false;
-                businessName.classList.add('is-invalid');
-            } else {
-                businessName.classList.remove('is-invalid');
-            }
-            
-            if (email.value.trim() === '' || !isValidEmail(email.value)) {
-                valid = false;
-                email.classList.add('is-invalid');
-            } else {
-                email.classList.remove('is-invalid');
-            }
-            
-            if (websitePlan.value === '') {
-                valid = false;
-                websitePlan.classList.add('is-invalid');
-            } else {
-                websitePlan.classList.remove('is-invalid');
-            }
-            
-            if (valid) {
-                // Prepare the form data
-                const formData = {
-                    name: name.value.trim(),
-                    businessName: businessName.value.trim(),
-                    email: email.value.trim(),
-                    phone: phone.value.trim(),
-                    websitePlan: websitePlan.value,
-                    rushDelivery: rushDelivery.value,
-                    budget: budget.value.trim(),
-                    message: message.value.trim()
-                };
+    // Check for URL parameters to display thank you message
+    function checkURLParameters() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        if (urlParams.has('thankyou') && urlParams.get('thankyou') === 'true') {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thanks! Your message has been sent. I\'ll get back to you shortly.';
                 
-                // Disable submit button and show loading state
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.textContent;
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                
-                // Send form data to backend API
-                fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Reset form
-                        contactForm.reset();
-                        
-                        // Show success message
-                        const successMessage = document.createElement('div');
-                        successMessage.className = 'success-message';
-                        successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ' + (data.message || 'Thanks! I\'ll get back to you shortly.');
-                        
-                        contactForm.appendChild(successMessage);
-                        
-                        // Remove success message after 5 seconds
-                        setTimeout(() => {
-                            successMessage.remove();
-                        }, 5000);
-                    } else {
-                        // Show error message
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'error-message';
-                        errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (data.error || 'Something went wrong. Please try again later.');
-                        
-                        contactForm.appendChild(errorMessage);
-                        
-                        // Remove error message after 5 seconds
-                        setTimeout(() => {
-                            errorMessage.remove();
-                        }, 5000);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                const formWrapper = contactSection.querySelector('.contact-form-wrapper');
+                if (formWrapper) {
+                    formWrapper.prepend(successMessage);
                     
-                    // Show error message
-                    const errorMessage = document.createElement('div');
-                    errorMessage.className = 'error-message';
-                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please try again later.';
-                    
-                    contactForm.appendChild(errorMessage);
-                    
-                    // Remove error message after 5 seconds
                     setTimeout(() => {
-                        errorMessage.remove();
-                    }, 5000);
-                })
-                .finally(() => {
-                    // Reset button
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonText;
-                });
+                        successMessage.remove();
+                    }, 8000);
+                }
+                
+                // Remove the parameter from URL without refreshing
+                const newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({path: newURL}, '', newURL);
             }
-        });
+        }
+        
+        if (urlParams.has('newsletter') && urlParams.get('newsletter') === 'subscribed') {
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                const newsletterForm = footer.querySelector('.newsletter-form');
+                if (newsletterForm) {
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for subscribing!';
+                    
+                    newsletterForm.after(successMessage);
+                    
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 8000);
+                }
+                
+                // Remove the parameter from URL without refreshing
+                const newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({path: newURL}, '', newURL);
+            }
+        }
     }
     
-    // Email validation helper
-    function isValidEmail(email) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
-    }
+    // Run check for URL parameters on page load
+    checkURLParameters();
 
     // Live Chat Widget
     const chatButton = document.getElementById('chatButton');
@@ -267,6 +184,9 @@ hamburger.addEventListener('click', function() {
     chatButton.addEventListener('click', () => {
         chatBox.classList.toggle('active');
         chatButton.style.display = 'none';
+        
+        // Load previous messages from localStorage
+        loadChatMessages();
     });
     
     chatClose.addEventListener('click', () => {
@@ -274,7 +194,260 @@ hamburger.addEventListener('click', function() {
         chatButton.style.display = 'flex';
     });
     
-    // Send message
+    // Advanced chat response function
+    function getChatResponse(message) {
+        // Convert to lowercase for easier matching
+        const text = message.toLowerCase();
+        
+        // Pricing related questions
+        if (text.includes('price') || text.includes('cost') || text.includes('fee') || 
+            text.includes('pricing') || text.includes('package') || text.includes('how much') || 
+            text.includes('rates') || text.includes('charges')) {
+            return `
+                Here are my website package prices:
+                
+                🚀 Starter (1 Page): $75 one-time fee
+                🏪 Standard (2-3 Pages): $125 one-time fee
+                💼 Advanced (4-6 Pages): $200 one-time fee
+                
+                I also offer:
+                ⚡ 24-Hour Rush Delivery: +25% surcharge
+                🔧 Monthly Maintenance: $5/month
+                
+                All prices are one-time payments. You'll only need to pay separately for domain registration (~$12-15/year) and hosting (~$5-10/month).
+                
+                Would you like more details about any specific package?
+            `;
+        }
+        
+        // Timeline/Delivery questions
+        else if (text.includes('time') || text.includes('how long') || text.includes('deadline') || 
+                 text.includes('turnaround') || text.includes('deliver') || text.includes('finish') || 
+                 text.includes('complete') || text.includes('fast') || text.includes('quick') ||
+                 text.includes('rush') || text.includes('urgent')) {
+            return `
+                My standard delivery timeline is 1-3 days for most websites.
+                
+                Need it faster? I offer a 24-hour rush delivery option for an additional 25% of the base package price.
+                
+                The timeline depends slightly on the complexity of your website and how quickly you can provide content (text, images, etc.).
+                
+                Let me know if you have a specific deadline in mind!
+            `;
+        }
+        
+        // Domain and hosting questions
+        else if (text.includes('domain') || text.includes('hosting') || text.includes('host') || 
+                 text.includes('url') || text.includes('website address') || text.includes('godaddy') || 
+                 text.includes('namecheap') || text.includes('server')) {
+            return `
+                For domain names and hosting:
+                
+                1. Domain names cost about $12-15/year (like yourname.com)
+                2. Hosting typically costs $5-10/month
+                
+                You'll own these accounts and pay for them directly. I'll help you set everything up and can recommend affordable options like Namecheap for domains and services like Netlify for hosting.
+                
+                I don't mark up these costs - you'll pay the provider directly so you maintain full ownership.
+            `;
+        }
+        
+        // Services/what's included questions
+        else if (text.includes('service') || text.includes('include') || text.includes('offer') || 
+                 text.includes('provide') || text.includes('feature') || text.includes('what do you do') || 
+                 text.includes('what you do') || text.includes('come with')) {
+            return `
+                My website services include:
+                
+                ✅ Custom, mobile-responsive design
+                ✅ Fast, modern websites
+                ✅ SEO best practices
+                ✅ Contact forms
+                ✅ Google Maps integration
+                ✅ Social media links
+                ✅ Basic training on how to update your content
+                ✅ Domain & hosting setup assistance
+                
+                The specific features depend on which package you choose. Would you like details on a particular package?
+            `;
+        }
+        
+        // Payment questions
+        else if (text.includes('payment') || text.includes('pay') || text.includes('accept') || 
+                 text.includes('deposit') || text.includes('venmo') || text.includes('paypal') || 
+                 text.includes('credit card') || text.includes('invoice')) {
+            return `
+                I accept payments via:
+                
+                💳 PayPal
+                💸 Venmo
+                🏦 Direct bank transfer
+                
+                For all projects, I require a 50% deposit before starting, with the remaining 50% due upon completion before the website goes live.
+                
+                I'll send you a detailed invoice with payment instructions after we discuss your project requirements.
+            `;
+        }
+        
+        // Process questions
+        else if (text.includes('process') || text.includes('step') || text.includes('how does it work') || 
+                 text.includes('how do we start') || text.includes('get started') || text.includes('begin') || 
+                 text.includes('what next') || text.includes('procedure')) {
+            return `
+                My website design process is simple:
+                
+                1️⃣ Consultation: We'll discuss your business goals, target audience, and website requirements.
+                
+                2️⃣ Design: I'll create a custom design mockup for your approval before building begins.
+                
+                3️⃣ Development: Once approved, I'll build your website with attention to detail and performance.
+                
+                4️⃣ Launch: After your final approval, we'll launch your new website!
+                
+                Ready to get started? Fill out the contact form below and I'll reach out within 24 hours.
+            `;
+        }
+        
+        // Contact/get in touch questions
+        else if (text.includes('contact') || text.includes('email') || text.includes('phone') || 
+                 text.includes('call') || text.includes('text') || text.includes('reach') || 
+                 text.includes('talk to') || text.includes('speak with') || text.includes('get in touch')) {
+            return `
+                You can reach me at:
+                
+                📧 Email: jacksseattlewebsites@gmail.com
+                📱 Phone: (206) 555-1234
+                
+                Or simply fill out the contact form at the bottom of this page.
+                
+                I typically respond to all inquiries within 24 hours, often much faster!
+            `;
+        }
+        
+        // Maintenance questions
+        else if (text.includes('maintenance') || text.includes('update') || text.includes('change') || 
+                 text.includes('edit') || text.includes('modify') || text.includes('after') || 
+                 text.includes('support') || text.includes('help') || text.includes('manage')) {
+            return `
+                After your website is live:
+                
+                1. You can make basic updates yourself (I'll show you how)
+                
+                2. For ongoing support, I offer a monthly maintenance plan for just $5/month that includes:
+                   - Small text/image updates anytime
+                   - Site uptime monitoring
+                   - Quick bug fixes
+                   - Priority response
+                   
+                3. For more significant changes later, I charge a small hourly rate or project fee based on the scope.
+                
+                Many clients find the $5/month maintenance plan gives them peace of mind!
+            `;
+        }
+        
+        // Portfolio/examples questions
+        else if (text.includes('portfolio') || text.includes('example') || text.includes('sample') || 
+                 text.includes('work') || text.includes('project') || text.includes('previous') || 
+                 text.includes('other site') || text.includes('show me')) {
+            return `
+                You can see my featured project (InsectScan app website) in the portfolio section of this page. As a newer service, I'm actively building my portfolio.
+                
+                Each project is custom-designed to match the client's unique needs and brand.
+                
+                What kind of website are you looking for? I'd be happy to explain how I would approach your specific project.
+            `;
+        }
+        
+        // Location questions
+        else if (text.includes('location') || text.includes('based') || text.includes('where') || 
+                 text.includes('seattle') || text.includes('local')) {
+            return `
+                I'm based in Seattle, Washington and primarily serve local small businesses. Being local means:
+                
+                👋 We can meet in person if needed
+                🌲 I understand the local market and culture
+                🕒 I'm in your time zone for quick communication
+                💼 I support our local business community
+                
+                However, I can work with clients anywhere since everything can be done remotely!
+            `;
+        }
+        
+        // Technology/platform questions
+        else if (text.includes('platform') || text.includes('wordpress') || text.includes('wix') || 
+                 text.includes('squarespace') || text.includes('technology') || text.includes('cms') || 
+                 text.includes('shopify') || text.includes('ecommerce') || text.includes('tech stack')) {
+            return `
+                I build custom websites using modern web technologies:
+                
+                - HTML5, CSS3, and JavaScript for fast, responsive sites
+                - Clean, hand-coded websites (no bloated platforms)
+                - SEO-friendly structure and best practices
+                
+                Unlike template-based platforms, my custom websites are:
+                ✅ Faster loading
+                ✅ More secure
+                ✅ Fully customized to your specific needs
+                ✅ No monthly platform fees
+                
+                For e-commerce needs, I can recommend the best solution based on your requirements.
+            `;
+        }
+        
+        // Greeting or hello
+        else if (text.includes('hello') || text.includes('hi') || text.includes('hey') || 
+                 text.includes('howdy') || text.includes('greetings') || text.match(/^[^a-zA-Z]*$/)) {
+            return `
+                👋 Hi there! Thanks for reaching out. I'm Jack, a Seattle-based web designer specializing in affordable, professional websites for small businesses.
+                
+                How can I help you today? Feel free to ask about my services, pricing, process, or anything else!
+            `;
+        }
+        
+        // Thank you messages
+        else if (text.includes('thank') || text.includes('thanks') || text.includes('appreciate') || 
+                 text.includes('helpful') || text.includes('great')) {
+            return `
+                You're very welcome! I'm happy to help. 
+                
+                Is there anything else you'd like to know about my web design services?
+                
+                When you're ready to move forward, you can fill out the contact form at the bottom of the page, and I'll get back to you quickly!
+            `;
+        }
+        
+        // Default response for anything not matched
+        else {
+            return `
+                Thanks for your message! I'm not sure I fully understand your question, but I'd be happy to help with your website needs.
+                
+                Some common questions include:
+                - Pricing and packages
+                - Timeline for completion
+                - Process for getting started
+                - What's included in my services
+                
+                Or you can fill out the contact form below for a more detailed conversation!
+            `;
+        }
+    }
+    
+    // Save chat messages to localStorage
+    function saveChatMessages() {
+        const messages = chatMessages.innerHTML;
+        localStorage.setItem('chatMessages', messages);
+    }
+    
+    // Load chat messages from localStorage
+    function loadChatMessages() {
+        const savedMessages = localStorage.getItem('chatMessages');
+        if (savedMessages) {
+            chatMessages.innerHTML = savedMessages;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+    
+    // Send message function
     function sendUserMessage() {
         const message = messageInput.value.trim();
         
@@ -285,45 +458,85 @@ hamburger.addEventListener('click', function() {
             // Clear input
             messageInput.value = '';
             
-            // Send message to backend for email notification
-            fetch('/api/chat-message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: message,
-                    name: 'Website Visitor' // Could be replaced with a name input if needed
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.response) {
-                    // Add bot response from server
-                    setTimeout(() => {
-                        addMessage('received', data.response);
-                        // Scroll to the bottom
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }, 1000);
-                } else {
-                    // Fallback response if server doesn't provide one
-                    setTimeout(() => {
-                        addMessage('received', "Thanks for your message! I'll get back to you shortly.");
-                        // Scroll to the bottom
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }, 1000);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Fallback response in case of network error
-                setTimeout(() => {
-                    addMessage('received', "Thanks for your message! I'll get back to you shortly.");
-                    // Scroll to the bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
-            });
+            // Create hidden form to send message via email
+            sendChatMessageViaEmail(message);
+            
+            // Display typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message received typing-indicator';
+            typingIndicator.innerHTML = '<div class="message-content"><p>Typing<span>.</span><span>.</span><span>.</span></p></div>';
+            chatMessages.appendChild(typingIndicator);
+            
+            // Scroll to the bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Get appropriate response
+            const botResponse = getChatResponse(message);
+            
+            // Remove typing indicator and show real response after a short delay
+            setTimeout(() => {
+                chatMessages.removeChild(typingIndicator);
+                addMessage('received', botResponse);
+                // Scroll to the bottom again
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                // Save messages to localStorage
+                saveChatMessages();
+            }, 1500);
         }
+    }
+    
+    // Send chat message via email using FormSubmit
+    function sendChatMessageViaEmail(message) {
+        // Create a hidden form
+        const form = document.createElement('form');
+        form.style.display = 'none';
+        form.method = 'POST';
+        form.action = 'https://formsubmit.co/jacksseattlewebsites@gmail.com';
+        
+        // Add form fields
+        const subjectField = document.createElement('input');
+        subjectField.type = 'hidden';
+        subjectField.name = '_subject';
+        subjectField.value = 'Chat Message from Website Visitor';
+        
+        const messageField = document.createElement('input');
+        messageField.type = 'hidden';
+        messageField.name = 'message';
+        messageField.value = message;
+        
+        const captchaField = document.createElement('input');
+        captchaField.type = 'hidden';
+        captchaField.name = '_captcha';
+        captchaField.value = 'false';
+        
+        const formTypeField = document.createElement('input');
+        formTypeField.type = 'hidden';
+        formTypeField.name = 'form-type';
+        formTypeField.value = 'chat';
+        
+        const honeypotField = document.createElement('input');
+        honeypotField.type = 'text';
+        honeypotField.name = '_honey';
+        honeypotField.value = '';
+        honeypotField.style.display = 'none';
+        
+        // Append fields to form
+        form.appendChild(subjectField);
+        form.appendChild(messageField);
+        form.appendChild(captchaField);
+        form.appendChild(formTypeField);
+        form.appendChild(honeypotField);
+        
+        // Append form to body
+        document.body.appendChild(form);
+        
+        // Submit the form
+        form.submit();
+        
+        // Remove form from DOM after submission
+        setTimeout(() => {
+            document.body.removeChild(form);
+        }, 1000);
     }
     
     // Add a message to the chat
@@ -387,87 +600,6 @@ hamburger.addEventListener('click', function() {
         localStorage.setItem('cookieConsent', 'declined');
         cookieConsent.classList.remove('active');
     });
-    
-    // Newsletter Form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const emailInput = this.querySelector('input[type="email"]');
-            
-            if (emailInput.value.trim() !== '' && isValidEmail(emailInput.value)) {
-                // Send the email to backend for notification
-                const submitButton = this.querySelector('button');
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                
-                fetch('/api/newsletter', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: emailInput.value.trim()
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Reset form
-                    this.reset();
-                    
-                    // Show success message
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for subscribing!';
-                    
-                    this.appendChild(successMessage);
-                    
-                    // Reset button
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = 'Subscribe';
-                    
-                    // Remove success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    
-                    // Show error message
-                    const errorMessage = document.createElement('div');
-                    errorMessage.className = 'error-message';
-                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error subscribing. Please try again.';
-                    
-                    this.appendChild(errorMessage);
-                    
-                    // Reset button
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = 'Subscribe';
-                    
-                    // Remove error message after 5 seconds
-                    setTimeout(() => {
-                        errorMessage.remove();
-                    }, 5000);
-                });
-            } else {
-                emailInput.classList.add('is-invalid');
-                
-                // Shake animation for invalid input
-                emailInput.classList.add('shake');
-                
-                setTimeout(() => {
-                    emailInput.classList.remove('shake');
-                }, 500);
-                
-                setTimeout(() => {
-                    emailInput.classList.remove('is-invalid');
-                }, 3000);
-            }
-        });
-    }
     
     // Back to Top Button
     const backToTop = document.querySelector('.back-to-top');
