@@ -121,74 +121,6 @@ hamburger.addEventListener('click', function() {
         });
     });
 
-    // Testimonials Slider
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const prevButton = document.querySelector('.testimonial-prev');
-    const nextButton = document.querySelector('.testimonial-next');
-    const dotsContainer = document.querySelector('.testimonial-dots');
-    let currentSlide = 0;
-    
-    // Create dots
-    testimonialSlides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-        });
-        
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = document.querySelectorAll('.dot');
-    
-    // Go to specific slide
-    function goToSlide(slideIndex) {
-        testimonialSlides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        testimonialSlides[slideIndex].classList.add('active');
-        dots[slideIndex].classList.add('active');
-        currentSlide = slideIndex;
-    }
-    
-    // Previous slide
-    function prevSlide() {
-        if (currentSlide === 0) {
-            goToSlide(testimonialSlides.length - 1);
-        } else {
-            goToSlide(currentSlide - 1);
-        }
-    }
-    
-    // Next slide
-    function nextSlide() {
-        if (currentSlide === testimonialSlides.length - 1) {
-            goToSlide(0);
-        } else {
-            goToSlide(currentSlide + 1);
-        }
-    }
-    
-    // Event listeners for controls
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-    
-    // Auto slide
-    let slideInterval = setInterval(nextSlide, 5000);
-    
-    // Pause auto slide on hover
-    const testimonialSlider = document.querySelector('.testimonial-slider');
-    
-    testimonialSlider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-    
-    testimonialSlider.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, 5000);
-    });
-
     // Contact Form Validation and Submission
     const contactForm = document.getElementById('contactForm');
     
@@ -203,6 +135,7 @@ hamburger.addEventListener('click', function() {
             const email = document.getElementById('email');
             const phone = document.getElementById('phone');
             const websitePlan = document.getElementById('websitePlan');
+            const rushDelivery = document.getElementById('rushDelivery');
             const budget = document.getElementById('budget');
             const message = document.getElementById('message');
             
@@ -242,6 +175,7 @@ hamburger.addEventListener('click', function() {
                     email: email.value.trim(),
                     phone: phone.value.trim(),
                     websitePlan: websitePlan.value,
+                    rushDelivery: rushDelivery.value,
                     budget: budget.value.trim(),
                     message: message.value.trim()
                 };
@@ -351,26 +285,44 @@ hamburger.addEventListener('click', function() {
             // Clear input
             messageInput.value = '';
             
-            // Simulate bot response after delay
-            setTimeout(() => {
-                let botResponse;
-                
-                // Simple bot responses based on keywords
-                if (message.toLowerCase().includes('pricing') || message.toLowerCase().includes('cost') || message.toLowerCase().includes('price')) {
-                    botResponse = "My packages start at $75 for a basic website. Check out the pricing section for more details, or let me know your specific needs for a custom quote!";
-                } else if (message.toLowerCase().includes('time') || message.toLowerCase().includes('how long') || message.toLowerCase().includes('deadline')) {
-                    botResponse = "Most projects are completed within 1-2 weeks, depending on complexity. I always aim to deliver on time without compromising quality!";
-                } else if (message.toLowerCase().includes('contact') || message.toLowerCase().includes('email') || message.toLowerCase().includes('phone')) {
-                    botResponse = "You can reach me at jacksseattlewebsites@gmail.com or call/text me at (206) 555-1234. I'm usually available quickly to answer questions!";
+            // Send message to backend for email notification
+            fetch('/api/chat-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    name: 'Website Visitor' // Could be replaced with a name input if needed
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.response) {
+                    // Add bot response from server
+                    setTimeout(() => {
+                        addMessage('received', data.response);
+                        // Scroll to the bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
                 } else {
-                    botResponse = "Thanks for your message! I'll get back to you shortly. In the meantime, feel free to check out my portfolio or pricing packages.";
+                    // Fallback response if server doesn't provide one
+                    setTimeout(() => {
+                        addMessage('received', "Thanks for your message! I'll get back to you shortly.");
+                        // Scroll to the bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
                 }
-                
-                addMessage('received', botResponse);
-                
-                // Scroll to the bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Fallback response in case of network error
+                setTimeout(() => {
+                    addMessage('received', "Thanks for your message! I'll get back to you shortly.");
+                    // Scroll to the bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            });
         }
     }
     
@@ -446,12 +398,22 @@ hamburger.addEventListener('click', function() {
             const emailInput = this.querySelector('input[type="email"]');
             
             if (emailInput.value.trim() !== '' && isValidEmail(emailInput.value)) {
-                // Simulate form submission
+                // Send the email to backend for notification
                 const submitButton = this.querySelector('button');
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                 
-                setTimeout(() => {
+                fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: emailInput.value.trim()
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
                     // Reset form
                     this.reset();
                     
@@ -470,7 +432,26 @@ hamburger.addEventListener('click', function() {
                     setTimeout(() => {
                         successMessage.remove();
                     }, 5000);
-                }, 1500);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    
+                    // Show error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error subscribing. Please try again.';
+                    
+                    this.appendChild(errorMessage);
+                    
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Subscribe';
+                    
+                    // Remove error message after 5 seconds
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 5000);
+                });
             } else {
                 emailInput.classList.add('is-invalid');
                 
