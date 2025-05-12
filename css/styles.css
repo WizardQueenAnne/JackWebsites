@@ -1804,10 +1804,11 @@ textarea.form-control {
     font-size: 1.4rem;
 }
 
+/* Update for back-to-top button - change from right to left side */
 .back-to-top {
     position: fixed;
     bottom: 3rem;
-    right: 3rem;
+    left: 3rem; /* Changed from right to left */
     width: 4.5rem;
     height: 4.5rem;
     background-color: var(--primary-color);
@@ -1822,6 +1823,22 @@ textarea.form-control {
     transition: var(--transition);
     z-index: 99;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the newsletter form is fully visible */
+.footer-newsletter {
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+/* Add some extra space at the bottom of the page */
+.footer-bottom {
+    padding: 2rem 0 3rem;
 }
 
 .back-to-top.active {
