@@ -507,59 +507,40 @@ function sendUserMessage() {
         }
     }
     
-    // Send chat message via email using FormSubmit
-    function sendChatMessageViaEmail(message) {
-        // Create a hidden form
-        const form = document.createElement('form');
-        form.style.display = 'none';
-        form.method = 'POST';
-        form.action = 'https://formsubmit.co/jacksseattlewebsites@gmail.com';
+// Send message function
+function sendUserMessage() {
+    const message = messageInput.value.trim();
+    
+    if (message !== '') {
+        // Add user message
+        addMessage('sent', message);
         
-        // Add form fields
-        const subjectField = document.createElement('input');
-        subjectField.type = 'hidden';
-        subjectField.name = '_subject';
-        subjectField.value = 'Chat Message from Website Visitor';
+        // Clear input
+        messageInput.value = '';
         
-        const messageField = document.createElement('input');
-        messageField.type = 'hidden';
-        messageField.name = 'message';
-        messageField.value = message;
+        // Display typing indicator
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'message received typing-indicator';
+        typingIndicator.innerHTML = '<div class="message-content"><p>Typing<span>.</span><span>.</span><span>.</span></p></div>';
+        chatMessages.appendChild(typingIndicator);
         
-        const captchaField = document.createElement('input');
-        captchaField.type = 'hidden';
-        captchaField.name = '_captcha';
-        captchaField.value = 'false';
+        // Scroll to the bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
         
-        const formTypeField = document.createElement('input');
-        formTypeField.type = 'hidden';
-        formTypeField.name = 'form-type';
-        formTypeField.value = 'chat';
+        // Get appropriate response
+        const botResponse = getChatResponse(message);
         
-        const honeypotField = document.createElement('input');
-        honeypotField.type = 'text';
-        honeypotField.name = '_honey';
-        honeypotField.value = '';
-        honeypotField.style.display = 'none';
-        
-        // Append fields to form
-        form.appendChild(subjectField);
-        form.appendChild(messageField);
-        form.appendChild(captchaField);
-        form.appendChild(formTypeField);
-        form.appendChild(honeypotField);
-        
-        // Append form to body
-        document.body.appendChild(form);
-        
-        // Submit the form
-        form.submit();
-        
-        // Remove form from DOM after submission
+        // Remove typing indicator and show real response after a short delay
         setTimeout(() => {
-            document.body.removeChild(form);
-        }, 1000);
+            chatMessages.removeChild(typingIndicator);
+            addMessage('received', botResponse);
+            // Scroll to the bottom again
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            // Save messages to localStorage
+            saveChatMessages();
+        }, 1500);
     }
+}
     
     // Add a message to the chat
     function addMessage(type, content) {
