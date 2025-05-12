@@ -2548,3 +2548,26 @@ textarea.form-control {
         margin-bottom: 3rem;
     }
 }
+/* Fix for newsletter form in footer */
+@media (max-width: 576px) {
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+        border-radius: 5px;
+    }
+    
+    .footer-newsletter {
+        margin-bottom: 3rem;
+    }
+}
