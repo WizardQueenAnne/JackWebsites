@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    hamburger.addEventListener('click', function() {
+hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
@@ -431,4 +431,200 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieConsent.classList.remove('active');
     });
     
-    cookie
+    cookieDecline.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieConsent.classList.remove('active');
+    });
+    
+    // Newsletter Form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('input[type="email"]');
+            
+            if (emailInput.value.trim() !== '' && isValidEmail(emailInput.value)) {
+                // Simulate form submission
+                const submitButton = this.querySelector('button');
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                setTimeout(() => {
+                    // Reset form
+                    this.reset();
+                    
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for subscribing!';
+                    
+                    this.appendChild(successMessage);
+                    
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Subscribe';
+                    
+                    // Remove success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                }, 1500);
+            } else {
+                emailInput.classList.add('is-invalid');
+                
+                // Shake animation for invalid input
+                emailInput.classList.add('shake');
+                
+                setTimeout(() => {
+                    emailInput.classList.remove('shake');
+                }, 500);
+                
+                setTimeout(() => {
+                    emailInput.classList.remove('is-invalid');
+                }, 3000);
+            }
+        });
+    }
+    
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+    
+    backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Add particle effects for hero section
+    const heroParticles = document.querySelector('.hero-particles');
+    
+    if (heroParticles) {
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('span');
+            particle.className = 'particle';
+            
+            // Random position, size, and animation delay
+            const size = Math.random() * 10 + 1;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            
+            heroParticles.appendChild(particle);
+        }
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Initialize all tooltips
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const tooltipText = this.getAttribute('data-tooltip');
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = tooltipText;
+            document.body.appendChild(tooltip);
+            
+            // Position the tooltip above the element
+            const rect = this.getBoundingClientRect();
+            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+            
+            // Add active class to show with animation
+            setTimeout(() => {
+                tooltip.classList.add('active');
+            }, 10);
+            
+            // Remove tooltip on mouseleave
+            this.addEventListener('mouseleave', function handler() {
+                tooltip.classList.remove('active');
+                
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 300);
+                
+                this.removeEventListener('mouseleave', handler);
+            });
+        });
+    });
+
+    // Portfolio Items modal functionality
+    const portfolioLinks = document.querySelectorAll('.portfolio-link');
+    
+    if (portfolioLinks.length > 0) {
+        portfolioLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // You could implement a modal here or redirect to a project page
+                alert('Portfolio project details would show here in a modal. This is a placeholder.');
+            });
+        });
+    }
+
+    // Function to add animations on scroll
+    function animateOnScroll() {
+        const animateElements = document.querySelectorAll('[data-animate]');
+        
+        animateElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // If element is in viewport
+            if (rect.top <= windowHeight * 0.8 && rect.bottom >= 0) {
+                const animation = element.getAttribute('data-animate');
+                element.classList.add(`animate-${animation}`);
+            }
+        });
+    }
+    
+    // Run animate on scroll function
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Run once on page load
+    setTimeout(animateOnScroll, 500);
+    
+    // Add shake animation style (for form validation)
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.5s ease;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    console.log("Jack's Seattle Websites - Website loaded successfully!");
+});
