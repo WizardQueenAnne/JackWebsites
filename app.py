@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import logging
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -40,6 +41,7 @@ def contact():
         email = data.get('email', '')
         phone = data.get('phone', 'Not provided')
         website_plan = data.get('websitePlan', '')
+        rush_delivery = data.get('rushDelivery', 'No')
         budget = data.get('budget', 'Not specified')
         message = data.get('message', '')
         
@@ -65,10 +67,13 @@ def contact():
         Phone: {phone}
         
         Website Plan: {website_plan}
+        24-Hour Rush Delivery: {rush_delivery}
         Budget/Offer: {budget}
         
         Notes/Requests:
         {message}
+        
+        Received: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         """
         
         msg.attach(MIMEText(email_body, 'plain'))
@@ -91,6 +96,67 @@ def contact():
         logger.error(f"Error processing contact form: {str(e)}")
         return jsonify({'success': False, 'error': str(e)}), 500
 
+@app.route('/api/chat-message', methods=['POST'])
+def chat_message():
+    try:
+        data = request.json
+        user_message = data.get('message', '')
+        user_name = data.get('name', 'Website Visitor')
+        
+        if not user_message:
+            return jsonify({'success': False, 'error': 'No message provided'}), 400
+        
+        # Log the chat message
+        logger.info(f"Chat message received: {user_message}")
+        
+        # Prepare email
+        msg = MIMEMultipart()
+        msg['From'] = EMAIL_USER
+        msg['To'] = EMAIL_RECIPIENT
+        msg['Subject'] = f"New Chat Message from {user_name}"
+        
+        email_body = f"""
+        New chat message from your website:
+        
+        From: {user_name}
+        Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        
+        Message:
+        {user_message}
+        """
+        
+        msg.attach(MIMEText(email_body, 'plain'))
+        
+        # Send email
+        if EMAIL_PASSWORD:  # Only attempt to send email if password is configured
+            with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
+                server.starttls()
+                server.login(EMAIL_USER, EMAIL_PASSWORD)
+                server.send_message(msg)
+                logger.info(f"Chat message email sent successfully to {EMAIL_RECIPIENT}")
+                
+        # Return a default bot response
+        bot_response = None
+        
+        # Simple bot responses based on keywords
+        if "pricing" in user_message.lower() or "cost" in user_message.lower() or "price" in user_message.lower():
+            bot_response = "My packages start at $75 for a basic website. Check out the pricing section for more details, or let me know your specific needs for a custom quote!"
+        elif "time" in user_message.lower() or "how long" in user_message.lower() or "deadline" in user_message.lower():
+            bot_response = "Most projects are completed within 1-3 days, and I offer a 24-hour rush delivery option for an additional 25% of the package price!"
+        elif "contact" in user_message.lower() or "email" in user_message.lower() or "phone" in user_message.lower():
+            bot_response = "You can reach me at jacksseattlewebsites@gmail.com or call/text me at (206) 555-1234. I'm usually available quickly to answer questions!"
+        else:
+            bot_response = "Thanks for your message! I'll get back to you shortly. In the meantime, feel free to check out my portfolio or pricing packages."
+            
+        return jsonify({
+            'success': True, 
+            'response': bot_response
+        }), 200
+            
+    except Exception as e:
+        logger.error(f"Error processing chat message: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 @app.route('/api/newsletter', methods=['POST'])
 def newsletter():
     try:
@@ -100,8 +166,31 @@ def newsletter():
         if not email:
             return jsonify({'success': False, 'error': 'Email is required'}), 400
         
-        # Log subscription (you can implement actual newsletter signup later)
+        # Log subscription
         logger.info(f"Newsletter subscription: {email}")
+        
+        # Prepare email notification
+        msg = MIMEMultipart()
+        msg['From'] = EMAIL_USER
+        msg['To'] = EMAIL_RECIPIENT
+        msg['Subject'] = "New Newsletter Subscription"
+        
+        email_body = f"""
+        Someone has subscribed to your newsletter:
+        
+        Email: {email}
+        Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        """
+        
+        msg.attach(MIMEText(email_body, 'plain'))
+        
+        # Send email
+        if EMAIL_PASSWORD:  # Only attempt to send email if password is configured
+            with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
+                server.starttls()
+                server.login(EMAIL_USER, EMAIL_PASSWORD)
+                server.send_message(msg)
+                logger.info(f"Newsletter subscription email sent successfully to {EMAIL_RECIPIENT}")
         
         # Here you would typically add the email to a newsletter service
         # For now, we'll just return success
