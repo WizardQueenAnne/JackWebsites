@@ -1,6 +1,6 @@
 /* 
  * Enhanced Chat JavaScript Code
- * Replace the entire content of your js/main.js file with this complete code
+ * Complete main.js file with form submission fix
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -681,7 +681,124 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
+
+    // Check if portfolio-featured image exists and if not, add console message
+    const portfolioFeaturedImg = document.querySelector('.project-image img');
+    if (portfolioFeaturedImg) {
+        portfolioFeaturedImg.addEventListener('error', function() {
+            console.warn('Portfolio featured image failed to load. Check that the file exists at the path: ' + this.src);
+            // Add a placeholder or fallback
+            this.src = 'https://via.placeholder.com/600x400?text=Portfolio+Project';
+        });
+    }
+    
+    // Form submission handling to prevent redirection to 404 pages
+    const contactForm = document.getElementById('contactForm');
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    // Handle contact form submission
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting normally
+            
+            const formData = new FormData(contactForm);
+            const contactFormWrapper = document.querySelector('.contact-form-wrapper');
+            
+            // Create loading indicator
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'success-message';
+            loadingMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending your message...';
+            contactFormWrapper.prepend(loadingMessage);
+            
+            // Submit the form data to FormSubmit.co using fetch API
+            fetch('https://formsubmit.co/jacksseattlewebsites@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // Remove loading message
+                loadingMessage.remove();
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thanks! Your message has been sent. I\'ll get back to you shortly.';
+                contactFormWrapper.prepend(successMessage);
+                
+                // Reset the form
+                contactForm.reset();
+                
+                // Remove success message after 8 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 8000);
+            })
+            .catch(error => {
+                // Remove loading message
+                loadingMessage.remove();
+                
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'error-message';
+                errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> There was a problem sending your message. Please try again or email me directly.';
+                contactFormWrapper.prepend(errorMessage);
+                
+                // Remove error message after 8 seconds
+                setTimeout(() => {
+                    errorMessage.remove();
+                }, 8000);
+                
+                console.error('Form submission error:', error);
+            });
+        });
+    }
+    
+    // Handle newsletter form submission
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting normally
+            
+            const formData = new FormData(newsletterForm);
+            const newsletterFormParent = newsletterForm.parentElement;
+            
+            // Submit the form data to FormSubmit.co using fetch API
+            fetch('https://formsubmit.co/jacksseattlewebsites@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for subscribing!';
+                
+                newsletterForm.after(successMessage);
+                
+                // Reset the form
+                newsletterForm.reset();
+                
+                // Remove success message after 8 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 8000);
+            })
+            .catch(error => {
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'error-message';
+                errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> There was a problem subscribing. Please try again.';
+                
+                newsletterForm.after(errorMessage);
+                
+                // Remove error message after 8 seconds
+                setTimeout(() => {
+                    errorMessage.remove();
+                }, 8000);
+                
+                console.error('Newsletter submission error:', error);
+            });
+        });
+    }
     
     console.log("Jack's Seattle Websites - Website loaded successfully!");
-
 });
