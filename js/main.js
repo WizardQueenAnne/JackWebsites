@@ -704,11 +704,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(contactForm);
             const contactFormWrapper = document.querySelector('.contact-form-wrapper');
             
-            // Create loading indicator
-            const loadingMessage = document.createElement('div');
-            loadingMessage.className = 'success-message';
-            loadingMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending your message...';
-            contactFormWrapper.prepend(loadingMessage);
+            // Show immediate confirmation message
+            const confirmationMessage = document.createElement('div');
+            confirmationMessage.className = 'success-message';
+            confirmationMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thanks for your message! You will receive a response from me shortly.';
+            contactFormWrapper.prepend(confirmationMessage);
             
             // Submit the form data to FormSubmit.co using fetch API
             fetch('https://formsubmit.co/jacksseattlewebsites@gmail.com', {
@@ -716,8 +716,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: formData
             })
             .then(response => {
-                // Remove loading message
-                loadingMessage.remove();
+                // Remove confirmation message
+                confirmationMessage.remove();
                 
                 // Show success message
                 const successMessage = document.createElement('div');
@@ -734,8 +734,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 8000);
             })
             .catch(error => {
-                // Remove loading message
-                loadingMessage.remove();
+                // Remove confirmation message
+                confirmationMessage.remove();
                 
                 // Show error message
                 const errorMessage = document.createElement('div');
