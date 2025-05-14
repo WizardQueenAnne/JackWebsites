@@ -1,1 +1,407 @@
-
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 900" width="100%" height="100%">
+  <!-- Definitions -->
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e7efff" />
+      <stop offset="100%" stop-color="#f0e5ff" />
+    </linearGradient>
+    
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8f9fa" />
+    </linearGradient>
+    
+    <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4361ee" />
+      <stop offset="100%" stop-color="#3a56d4" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff006e" />
+      <stop offset="100%" stop-color="#8338ec" />
+    </linearGradient>
+    
+    <linearGradient id="codeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e3f" />
+      <stop offset="100%" stop-color="#2d2b55" />
+    </linearGradient>
+    
+    <linearGradient id="stainlessSteel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8b8b8" />
+      <stop offset="20%" stop-color="#d8d8d8" />
+      <stop offset="50%" stop-color="#f0f0f0" />
+      <stop offset="80%" stop-color="#d0d0d0" />
+      <stop offset="100%" stop-color="#a0a0a0" />
+    </linearGradient>
+    
+    <linearGradient id="keyboardGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d8d8d8" />
+      <stop offset="100%" stop-color="#b8b8b8" />
+    </linearGradient>
+    
+    <!-- Patterns -->
+    <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#f8f9fa" />
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e9ecef" stroke-width="1" />
+    </pattern>
+    
+    <pattern id="dotsPattern" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="none" />
+      <circle cx="5" cy="5" r="1" fill="#3a86ff" opacity="0.5" />
+    </pattern>
+    
+    <!-- Filters -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000000" flood-opacity="0.2" />
+    </filter>
+    
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="3" />
+      <feGaussianBlur stdDeviation="3" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.2" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" /> 
+    </filter>
+    
+    <!-- Clipaths -->
+    <clipPath id="screenClip">
+      <rect x="250" y="150" width="700" height="440" rx="8" />
+    </clipPath>
+    
+    <clipPath id="laptopScreenClip">
+      <rect x="300" y="200" width="600" height="375" rx="8" />
+    </clipPath>
+    
+    <clipPath id="phoneScreenClip">
+      <rect x="940" y="400" width="120" height="220" rx="12" />
+    </clipPath>
+    
+    <clipPath id="tabletScreenClip">
+      <rect x="80" y="300" width="180" height="240" rx="10" />
+    </clipPath>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="900" fill="url(#bgGradient)" />
+  
+  <!-- Background grid -->
+  <rect width="1200" height="900" fill="url(#gridPattern)" opacity="0.4" />
+  
+  <!-- Abstract shapes in background -->
+  <circle cx="100" cy="150" r="80" fill="#3a86ff" opacity="0.1" />
+  <circle cx="1100" cy="750" r="120" fill="#ff006e" opacity="0.05" />
+  <circle cx="200" cy="800" r="100" fill="#8338ec" opacity="0.07" />
+  <path d="M950,100 L1050,150 L1000,250 Z" fill="#3a86ff" opacity="0.08" />
+  <path d="M150,650 L250,600 L300,700 L100,700 Z" fill="#ff006e" opacity="0.06" />
+  
+  <!-- Main laptop -->
+  <g transform="translate(600, 450) scale(1.2)">
+    <!-- Laptop base/keyboard -->
+    <path d="M-200,140 L200,140 L240,210 L-240,210 Z" fill="url(#stainlessSteel)" filter="url(#dropShadow)" />
+    <rect x="-200" y="135" width="400" height="10" rx="5" fill="#a0a0a0" />
+    
+    <!-- Touchpad -->
+    <rect x="-60" y="170" width="120" height="80" rx="5" fill="#d0d0d0" />
+    <rect x="-55" y="175" width="110" height="70" rx="3" fill="#e8e8e8" />
+    
+    <!-- Keyboard keys suggestion -->
+    <rect x="-180" y="155" width="110" height="70" rx="2" fill="url(#keyboardGradient)" />
+    <g fill="#606060" opacity="0.8">
+      <rect x="-175" y="160" width="12" height="12" rx="2" />
+      <rect x="-160" y="160" width="12" height="12" rx="2" />
+      <rect x="-145" y="160" width="12" height="12" rx="2" />
+      <rect x="-130" y="160" width="12" height="12" rx="2" />
+      <rect x="-115" y="160" width="12" height="12" rx="2" />
+      <rect x="-100" y="160" width="12" height="12" rx="2" />
+      <rect x="-85" y="160" width="12" height="12" rx="2" />
+      
+      <rect x="-170" y="175" width="12" height="12" rx="2" />
+      <rect x="-155" y="175" width="12" height="12" rx="2" />
+      <rect x="-140" y="175" width="12" height="12" rx="2" />
+      <rect x="-125" y="175" width="12" height="12" rx="2" />
+      <rect x="-110" y="175" width="12" height="12" rx="2" />
+      <rect x="-95" y="175" width="12" height="12" rx="2" />
+      
+      <rect x="-175" y="190" width="12" height="12" rx="2" />
+      <rect x="-160" y="190" width="12" height="12" rx="2" />
+      <rect x="-145" y="190" width="12" height="12" rx="2" />
+      <rect x="-130" y="190" width="12" height="12" rx="2" />
+      <rect x="-115" y="190" width="12" height="12" rx="2" />
+      <rect x="-100" y="190" width="12" height="12" rx="2" />
+    </g>
+    
+    <!-- More keys on right side -->
+    <rect x="80" y="155" width="90" height="70" rx="2" fill="url(#keyboardGradient)" />
+    <g fill="#606060" opacity="0.8">
+      <rect x="85" y="160" width="12" height="12" rx="2" />
+      <rect x="100" y="160" width="12" height="12" rx="2" />
+      <rect x="115" y="160" width="12" height="12" rx="2" />
+      <rect x="130" y="160" width="12" height="12" rx="2" />
+      <rect x="145" y="160" width="12" height="12" rx="2" />
+      
+      <rect x="90" y="175" width="12" height="12" rx="2" />
+      <rect x="105" y="175" width="12" height="12" rx="2" />
+      <rect x="120" y="175" width="12" height="12" rx="2" />
+      <rect x="135" y="175" width="12" height="12" rx="2" />
+      <rect x="150" y="175" width="12" height="12" rx="2" />
+      
+      <rect x="85" y="190" width="12" height="12" rx="2" />
+      <rect x="100" y="190" width="12" height="12" rx="2" />
+      <rect x="115" y="190" width="12" height="12" rx="2" />
+      <rect x="130" y="190" width="12" height="12" rx="2" />
+      <rect x="145" y="190" width="12" height="12" rx="2" />
+    </g>
+    
+    <!-- Laptop screen outer -->
+    <rect x="-200" y="-175" width="400" height="310" rx="10" fill="#1a1a1a" filter="url(#dropShadow)" />
+    
+    <!-- Screen bezel -->
+    <rect x="-190" y="-165" width="380" height="290" rx="5" fill="#1a1a1a" />
+    
+    <!-- Camera -->
+    <circle cx="0" cy="-155" r="3" fill="#606060" />
+    <circle cx="0" cy="-155" r="1" fill="#303030" />
+    
+    <!-- Laptop screen inner - actual display -->
+    <rect x="-180" y="-150" width="360" height="265" rx="3" fill="url(#screenGlow)" filter="url(#innerShadow)" />
+    
+    <!-- Website content on screen -->
+    <g>
+      <!-- Navigation bar -->
+      <rect x="-180" y="-150" width="360" height="40" rx="3" fill="#3a86ff" />
+      
+      <!-- Logo -->
+      <rect x="-170" y="-140" width="60" height="20" rx="5" fill="#ffffff" />
+      <text x="-155" y="-125" font-family="Arial" font-size="12" font-weight="bold" fill="#3a86ff">LOGO</text>
+      
+      <!-- Nav items -->
+      <g fill="#ffffff" opacity="0.9">
+        <rect x="-100" y="-135" width="40" height="10" rx="5" />
+        <rect x="-50" y="-135" width="40" height="10" rx="5" />
+        <rect x="0" y="-135" width="40" height="10" rx="5" />
+        <rect x="50" y="-135" width="40" height="10" rx="5" />
+        <rect x="100" y="-135" width="40" height="10" rx="5" />
+      </g>
+      
+      <!-- Hero section -->
+      <rect x="-180" y="-110" width="360" height="120" fill="url(#accentGradient)" opacity="0.1" />
+      
+      <!-- Hero content -->
+      <rect x="-170" y="-95" width="160" height="25" rx="3" fill="#14213d" opacity="0.9" />
+      <rect x="-170" y="-60" width="140" height="8" rx="2" fill="#6c757d" opacity="0.7" />
+      <rect x="-170" y="-45" width="130" height="8" rx="2" fill="#6c757d" opacity="0.7" />
+      
+      <!-- Hero button -->
+      <rect x="-170" y="-25" width="80" height="20" rx="10" fill="url(#buttonGradient)" />
+      
+      <!-- Hero image -->
+      <rect x="0" y="-95" width="170" height="90" rx="5" fill="#f8f9fa" />
+      <circle cx="50" cy="-50" r="20" fill="#3a86ff" opacity="0.3" />
+      <path d="M90,-90 L130,-60 L90,-30 Z" fill="#ff006e" opacity="0.3" />
+      
+      <!-- Cards section -->
+      <rect x="-180" y="10" width="360" height="30" fill="#ffffff" />
+      <text x="0" y="30" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#14213d">SERVICES</text>
+      
+      <!-- Service cards -->
+      <g>
+        <!-- Card 1 -->
+        <rect x="-170" y="50" width="105" height="60" rx="5" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+        <rect x="-160" y="60" width="85" height="10" rx="2" fill="#14213d" opacity="0.8" />
+        <rect x="-160" y="75" width="70" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+        <rect x="-160" y="85" width="75" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+        
+        <!-- Card 2 -->
+        <rect x="-55" y="50" width="105" height="60" rx="5" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+        <rect x="-45" y="60" width="85" height="10" rx="2" fill="#14213d" opacity="0.8" />
+        <rect x="-45" y="75" width="70" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+        <rect x="-45" y="85" width="75" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+        
+        <!-- Card 3 -->
+        <rect x="60" y="50" width="105" height="60" rx="5" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+        <rect x="70" y="60" width="85" height="10" rx="2" fill="#14213d" opacity="0.8" />
+        <rect x="70" y="75" width="70" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+        <rect x="70" y="85" width="75" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Phone on right -->
+  <g transform="translate(0, 0)">
+    <!-- Phone body -->
+    <rect x="900" y="380" width="160" height="320" rx="20" fill="#1a1a1a" filter="url(#dropShadow)" />
+    <!-- Phone screen -->
+    <rect x="910" y="390" width="140" height="300" rx="12" fill="url(#screenGlow)" />
+    
+    <!-- Phone content -->
+    <g clip-path="url(#phoneScreenClip)">
+      <!-- Mobile header -->
+      <rect x="910" y="390" width="140" height="40" fill="#3a86ff" />
+      <rect x="925" y="405" width="50" height="10" rx="5" fill="#ffffff" opacity="0.9" />
+      
+      <!-- Mobile menu icon -->
+      <g fill="#ffffff">
+        <rect x="990" y="405" width="20" height="2" rx="1" />
+        <rect x="990" y="410" width="20" height="2" rx="1" />
+        <rect x="990" y="415" width="20" height="2" rx="1" />
+      </g>
+      
+      <!-- Mobile content -->
+      <rect x="920" y="450" width="120" height="20" rx="3" fill="#14213d" opacity="0.9" />
+      <rect x="920" y="480" width="100" height="10" rx="2" fill="#6c757d" opacity="0.7" />
+      <rect x="920" y="495" width="110" height="10" rx="2" fill="#6c757d" opacity="0.7" />
+      
+      <!-- Mobile button -->
+      <rect x="920" y="520" width="90" height="30" rx="15" fill="url(#buttonGradient)" />
+      
+      <!-- Mobile cards -->
+      <rect x="920" y="570" width="120" height="70" rx="8" fill="#ffffff" stroke="#e9ecef" stroke-width="1" />
+      <rect x="930" y="580" width="100" height="10" rx="2" fill="#14213d" opacity="0.8" />
+      <rect x="930" y="600" width="80" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+      <rect x="930" y="615" width="80" height="6" rx="2" fill="#6c757d" opacity="0.6" />
+    </g>
+    
+    <!-- Phone bottom button -->
+    <circle cx="980" cy="660" r="15" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1" />
+  </g>
+  
+  <!-- Tablet on left -->
+  <g transform="translate(0, 0)">
+    <!-- Tablet body -->
+    <rect x="70" y="280" width="220" height="320" rx="15" fill="#1a1a1a" filter="url(#dropShadow)" />
+    <!-- Tablet screen -->
+    <rect x="80" y="290" width="200" height="300" rx="8" fill="url(#screenGlow)" />
+    
+    <!-- Tablet content -->
+    <g clip-path="url(#tabletScreenClip)">
+      <!-- Tablet header -->
+      <rect x="80" y="290" width="200" height="50" fill="#3a86ff" />
+      <rect x="100" y="310" width="70" height="15" rx="7" fill="#ffffff" opacity="0.9" />
+      
+      <!-- Tablet menu icon -->
+      <g fill="#ffffff">
+        <rect x="190" y="310" width="30" height="3" rx="1" />
+        <rect x="190" y="318" width="30" height="3" rx="1" />
+        <rect x="190" y="326" width="30" height="3" rx="1" />
+      </g>
+      
+      <!-- Tablet content -->
+      <rect x="90" y="360" width="180" height="25" rx="3" fill="#14213d" opacity="0.9" />
+      <rect x="90" y="395" width="150" height="10" rx="2" fill="#6c757d" opacity="0.7" />
+      <rect x="90" y="410" width="160" height="10" rx="2" fill="#6c757d" opacity="0.7" />
+      
+      <!-- Tablet button -->
+      <rect x="90" y="440" width="100" height="35" rx="17" fill="url(#buttonGradient)" />
+      
+      <!-- Tablet image -->
+      <rect x="90" y="490" width="180" height="90" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" />
+      <circle cx="140" cy="535" r="25" fill="#ff006e" opacity="0.2" />
+      <path d="M180,510 L210,535 L180,560 Z" fill="#3a86ff" opacity="0.2" />
+    </g>
+    
+    <!-- Tablet camera -->
+    <circle cx="180" cy="300" r="3" fill="#606060" />
+    <circle cx="180" cy="300" r="1" fill="#303030" />
+  </g>
+  
+  <!-- Code snippet floating -->
+  <g transform="translate(850, 250) rotate(10)">
+    <rect width="240" height="160" rx="10" fill="url(#codeGradient)" filter="url(#dropShadow)" />
+    
+    <!-- Code lines -->
+    <g fill="#ffffff" opacity="0.9">
+      <text x="20" y="30" font-family="Consolas, monospace" font-size="12">.header {</text>
+      <text x="30" y="50" font-family="Consolas, monospace" font-size="12" fill="#ff9d00">position: fixed;</text>
+      <text x="30" y="70" font-family="Consolas, monospace" font-size="12" fill="#ff628c">background-color: #fff;</text>
+      <text x="30" y="90" font-family="Consolas, monospace" font-size="12" fill="#a5ff90">box-shadow: 0 2px 8px rgba(0,0,0,.1);</text>
+      <text x="30" y="110" font-family="Consolas, monospace" font-size="12" fill="#ff9d00">z-index: 100;</text>
+      <text x="20" y="130" font-family="Consolas, monospace" font-size="12">}</text>
+    </g>
+  </g>
+  
+  <!-- Color palette floating -->
+  <g transform="translate(350, 170) rotate(-5)">
+    <rect width="200" height="70" rx="10" fill="#ffffff" filter="url(#dropShadow)" />
+    <text x="20" y="25" font-family="Arial" font-size="14" font-weight="bold" fill="#14213d">COLOR PALETTE</text>
+    
+    <!-- Color swatches -->
+    <rect x="20" y="35" width="30" height="20" rx="3" fill="#3a86ff" />
+    <rect x="60" y="35" width="30" height="20" rx="3" fill="#ff006e" />
+    <rect x="100" y="35" width="30" height="20" rx="3" fill="#8338ec" />
+    <rect x="140" y="35" width="30" height="20" rx="3" fill="#14213d" />
+  </g>
+  
+  <!-- Wireframe floating -->
+  <g transform="translate(250, 750) rotate(-8)">
+    <rect width="180" height="120" rx="10" fill="#ffffff" filter="url(#dropShadow)" />
+    <rect x="15" y="15" width="150" height="20" rx="3" fill="#e9ecef" />
+    <rect x="15" y="45" width="70" height="60" rx="3" fill="#e9ecef" />
+    <rect x="95" y="45" width="70" height="25" rx="3" fill="#e9ecef" />
+    <rect x="95" y="80" width="70" height="25" rx="3" fill="#e9ecef" />
+  </g>
+  
+  <!-- Design tools floating -->
+  <g transform="translate(900, 750) rotate(5)">
+    <rect width="220" height="100" rx="10" fill="#ffffff" filter="url(#dropShadow)" />
+    <text x="20" y="30" font-family="Arial" font-size="14" font-weight="bold" fill="#14213d">DESIGN TOOLS</text>
+    
+    <!-- Tools icons simplified -->
+    <circle cx="40" cy="60" r="15" fill="#ff006e" opacity="0.7" />
+    <rect x="70" y="45" width="30" height="30" rx="5" fill="#3a86ff" opacity="0.7" />
+    <polygon points="130,45 145,60 130,75 115,60" fill="#8338ec" opacity="0.7" />
+    <circle cx="180" cy="60" r="15" stroke="#14213d" stroke-width="2" fill="none" />
+  </g>
+  
+  <!-- Responsive design symbols -->
+  <g transform="translate(150, 500) rotate(-10)">
+    <rect width="180" height="80" rx="10" fill="#ffffff" filter="url(#dropShadow)" />
+    <text x="25" y="30" font-family="Arial" font-size="13" font-weight="bold" fill="#14213d">RESPONSIVE DESIGN</text>
+    
+    <!-- Device icons -->
+    <rect x="25" y="40" width="30" height="25" rx="2" fill="#14213d" />
+    <rect x="65" y="45" width="20" height="35" rx="2" fill="#14213d" />
+    <rect x="95" y="50" width="15" height="25" rx="2" fill="#14213d" />
+    <path d="M120,40 L150,40 L150,60 L140,70 L120,70 Z" fill="#14213d" />
+  </g>
+  
+  <!-- Floating UI elements -->
+  <g transform="translate(700, 700) rotate(8)">
+    <!-- Button -->
+    <rect width="120" height="40" rx="20" fill="url(#buttonGradient)" filter="url(#dropShadow)" />
+    <text x="60" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#ffffff">BUTTON</text>
+    
+    <!-- Toggle -->
+    <g transform="translate(0, 60)">
+      <rect width="60" height="30" rx="15" fill="#3a86ff" filter="url(#dropShadow)" />
+      <circle cx="45" cy="15" r="12" fill="#ffffff" />
+    </g>
+    
+    <!-- Input field -->
+    <g transform="translate(70, 60)">
+      <rect width="120" height="30" rx="5" fill="#ffffff" stroke="#e9ecef" stroke-width="2" filter="url(#dropShadow)" />
+      <text x="20" y="20" font-family="Arial" font-size="12" fill="#6c757d">Input field</text>
+    </g>
+  </g>
+  
+  <!-- SEO floating element -->
+  <g transform="translate(500, 130) rotate(-5)">
+    <rect width="140" height="70" rx="10" fill="#ffffff" filter="url(#dropShadow)" />
+    <text x="40" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#14213d">SEO</text>
+    
+    <!-- Magnifying glass icon -->
+    <circle cx="50" cy="45" r="12" stroke="#3a86ff" stroke-width="3" fill="none" />
+    <line x1="58" y1="53" x2="70" y2="65" stroke="#3a86ff" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Chart bars -->
+    <rect x="80" y="40" width="10" height="20" fill="#3a86ff" opacity="0.7" />
+    <rect x="95" y="30" width="10" height="30" fill="#3a86ff" opacity="0.9" />
+    <rect x="110" y="35" width="10" height="25" fill="#3a86ff" opacity="0.8" />
+  </g>
+</svg>
