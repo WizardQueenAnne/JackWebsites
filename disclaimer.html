@@ -86,4 +86,128 @@
                     </ul>
                     
                     <h2>Payment Processing</h2>
-                    <p>All payments are processed through trusted third-party platforms like PayPal or Venmo to ensure security. I do not store payment information and follow standard security practices when handlin
+                    <p>All payments are processed through trusted third-party platforms like PayPal or Venmo to ensure security. I do not store payment information and follow standard security practices when handling client information.</p>
+                    
+                    <h2>Project Agreements</h2>
+                    <p>For every project, I provide clear documentation of what will be delivered, the timeline, and payment terms. This helps ensure we have a mutual understanding before any work begins.</p>
+                    
+                    <h2>Questions?</h2>
+                    <p>If you have any questions about this disclaimer or my services, please don't hesitate to contact me at <strong>jacksseattlewebsites@gmail.com</strong>.</p>
+                </div>
+                
+                <div class="terms-footer">
+                    <p>For complete terms and conditions, please review our Terms of Service.</p>
+                    <a href="/terms" class="btn btn-primary">View Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h3 class="logo-text">Jack's <span>Seattle</span> Websites</h3>
+                        <p>Creating affordable, professional websites for small businesses in Seattle.</p>
+                        <div class="disclaimer-short">
+                            <p>Student-run freelance service. <a href="/disclaimer">View full disclaimer</a>.</p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/#home">Home</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#pricing">Pricing</a></li>
+                            <li><a href="/#portfolio">Portfolio</a></li>
+                            <li><a href="/#faq">FAQ</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="/#pricing">Starter Website ($75)</a></li>
+                            <li><a href="/#pricing">Standard Website ($125)</a></li>
+                            <li><a href="/#pricing">Advanced Website ($200)</a></li>
+                            <li><a href="/#pricing">24-Hour Rush Delivery</a></li>
+                            <li><a href="/#pricing">Monthly Maintenance ($5/mo)</a></li>
+                            <li><a href="/#contact">Custom Projects</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="/terms">Terms of Service</a></li>
+                            <li><a href="/disclaimer">Legal Disclaimer</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to receive tips and updates on web design trends.</p>
+                        <form class="newsletter-form" action="https://formsubmit.co/jacksseattlewebsites@gmail.com" method="POST" target="_blank">
+                            <!-- Hidden fields for FormSubmit configuration -->
+                            <input type="hidden" name="_subject" value="Newsletter Subscription!">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://jackwebsites.github.io/?newsletter=subscribed">
+                            <input type="hidden" name="form-type" value="newsletter">
+                            
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <button type="submit" class="btn btn-sm btn-primary" style="min-width: 90px;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2025 Jack's Seattle Websites. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
