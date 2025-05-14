@@ -865,5 +865,18 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="js/main.js"></script>
+<script>
+  // Improve performance by deferring non-critical operations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Delay AOS initialization to improve initial load performance
+    setTimeout(function() {
+      AOS.init({
+        disable: window.innerWidth < 768, // Disable on mobile devices
+        once: true, // Only animate elements once
+        duration: 600 // Shorter animation duration
+      });
+    }, 100);
+  });
+</script>
 </body>
 </html>
