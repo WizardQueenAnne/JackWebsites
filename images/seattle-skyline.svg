@@ -1,1 +1,146 @@
-
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 500" width="100%" height="100%">
+  <!-- Definitions -->
+  <defs>
+    <!-- Sky gradient in purple/blue theme -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0e5ff" /> <!-- Light purple -->
+      <stop offset="100%" stop-color="#e7efff" /> <!-- Light blue -->
+    </linearGradient>
+    
+    <!-- Silhouette color for buildings -->
+    <linearGradient id="buildingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3a56d4" /> <!-- Dark blue -->
+      <stop offset="100%" stop-color="#8338ec" /> <!-- Purple -->
+    </linearGradient>
+    
+    <!-- Space Needle gradient -->
+    <linearGradient id="needleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8338ec" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#3a86ff" /> <!-- Blue -->
+    </linearGradient>
+    
+    <!-- Water gradient -->
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3a86ff" stop-opacity="0.3" /> <!-- Blue -->
+      <stop offset="50%" stop-color="#8338ec" stop-opacity="0.2" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#3a86ff" stop-opacity="0.3" /> <!-- Blue -->
+    </linearGradient>
+    
+    <!-- Great Wheel cabins gradient -->
+    <linearGradient id="cabinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e7efff" />
+    </linearGradient>
+    
+    <!-- Columbia Center gradient -->
+    <linearGradient id="columbiaCenterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3a56d4" /> <!-- Dark blue -->
+      <stop offset="100%" stop-color="#14213d" /> <!-- Very dark blue -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect x="0" y="0" width="1200" height="500" fill="url(#skyGradient)" />
+  
+  <!-- Mt. Rainier in background - more distant, lower opacity -->
+  <path d="M900,310 Q1000,170 1100,290 L1200,290 L1200,500 L900,500 Z" fill="url(#buildingGradient)" opacity="0.25" />
+  
+  <!-- Water/Puget Sound -->
+  <rect x="0" y="350" width="1200" height="150" fill="url(#waterGradient)" />
+  
+  <!-- Subtle horizon line -->
+  <line x1="0" y1="350" x2="1200" y2="350" stroke="#8338ec" stroke-width="1" opacity="0.5" />
+  
+  <!-- Downtown Seattle skyline - accurate proportions, centered on Columbia Center -->
+  <g opacity="0.85">
+    <!-- Columbia Center (tallest building in Seattle at 937ft) -->
+    <rect x="600" y="140" width="50" height="210" fill="url(#columbiaCenterGradient)" />
+    
+    <!-- Two Union Square -->
+    <rect x="670" y="170" width="40" height="180" fill="url(#buildingGradient)" />
+    
+    <!-- 1201 Third Avenue (Washington Mutual Tower) -->
+    <rect x="530" y="180" width="45" height="170" fill="url(#buildingGradient)" />
+    <path d="M530,180 L552.5,165 L575,180 Z" fill="url(#buildingGradient)" />
+    
+    <!-- Seattle Municipal Tower -->
+    <rect x="730" y="190" width="35" height="160" fill="url(#buildingGradient)" />
+    
+    <!-- Russell Investments Center -->
+    <rect x="470" y="200" width="40" height="150" fill="url(#buildingGradient)" />
+    
+    <!-- Other downtown buildings - spaced properly -->
+    <rect x="410" y="220" width="40" height="130" fill="url(#buildingGradient)" />
+    <rect x="780" y="220" width="35" height="130" fill="url(#buildingGradient)" />
+    <rect x="830" y="240" width="30" height="110" fill="url(#buildingGradient)" />
+    <rect x="880" y="260" width="35" height="90" fill="url(#buildingGradient)" />
+    <rect x="360" y="250" width="35" height="100" fill="url(#buildingGradient)" />
+  </g>
+  
+  <!-- Smith Tower (historical building) -->
+  <g>
+    <rect x="300" y="230" width="30" height="120" fill="url(#buildingGradient)" />
+    <path d="M300,230 L315,210 L330,230 Z" fill="url(#buildingGradient)" />
+    <rect x="312" y="195" width="6" height="15" fill="url(#buildingGradient)" />
+  </g>
+  
+  <!-- Space Needle - accurate proportions at 605ft tall, 2 miles from downtown -->
+  <g>
+    <!-- Base -->
+    <rect x="170" y="340" width="36" height="10" fill="url(#needleGradient)" />
+    
+    <!-- Legs - correct tapered shape -->
+    <path d="M176,340 L184,210 M200,340 L192,210" stroke="url(#needleGradient)" stroke-width="4" stroke-linecap="round" />
+    <path d="M182,340 L188,210" stroke="url(#needleGradient)" stroke-width="2" />
+    
+    <!-- Observation deck - wide saucer shape -->
+    <ellipse cx="188" cy="210" rx="25" ry="8" fill="url(#needleGradient)" />
+    <ellipse cx="188" cy="203" rx="18" ry="4" fill="url(#needleGradient)" />
+    
+    <!-- Top spire -->
+    <rect x="186" y="175" width="4" height="28" fill="url(#needleGradient)" />
+    <circle cx="188" cy="175" r="2" fill="#8338ec" />
+  </g>
+  
+  <!-- Seattle Great Wheel - proportionally 175ft tall, 2 miles from Space Needle -->
+  <g>
+    <!-- Support structure -->
+    <rect x="935" y="330" width="30" height="20" fill="url(#needleGradient)" />
+    
+    <!-- Main wheel -->
+    <circle cx="950" cy="300" r="30" stroke="url(#needleGradient)" stroke-width="3" fill="none" />
+    <circle cx="950" cy="300" r="27" stroke="url(#needleGradient)" stroke-width="1.5" fill="none" />
+    <circle cx="950" cy="300" r="24" stroke="url(#needleGradient)" stroke-width="1" fill="none" />
+    
+    <!-- Spokes -->
+    <line x1="950" y1="270" x2="950" y2="330" stroke="url(#needleGradient)" stroke-width="2" />
+    <line x1="920" y1="300" x2="980" y2="300" stroke="url(#needleGradient)" stroke-width="2" />
+    <line x1="930" y1="280" x2="970" y2="320" stroke="url(#needleGradient)" stroke-width="1.5" />
+    <line x1="930" y1="320" x2="970" y2="280" stroke="url(#needleGradient)" stroke-width="1.5" />
+    
+    <!-- Gondolas -->
+    <rect x="947" y="270" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" />
+    <rect x="947" y="326" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" />
+    <rect x="920" y="297" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" />
+    <rect x="974" y="297" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" />
+    <rect x="932" y="282" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" transform="rotate(-45 932 282)" />
+    <rect x="968" y="318" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" transform="rotate(-45 968 318)" />
+    <rect x="932" y="318" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" transform="rotate(45 932 318)" />
+    <rect x="968" y="282" width="6" height="4" rx="1" fill="url(#cabinGradient)" stroke="#8338ec" stroke-width="0.5" transform="rotate(45 968 282)" />
+    
+    <!-- Hub -->
+    <circle cx="950" cy="300" r="3" fill="url(#needleGradient)" />
+  </g>
+  
+  <!-- Subtle reflections in water -->
+  <g opacity="0.3">
+    <!-- Columbia Center reflection -->
+    <rect x="600" y="360" width="50" height="80" fill="url(#columbiaCenterGradient)" opacity="0.3" />
+    
+    <!-- Space Needle reflection -->
+    <path d="M176,360 L200,360 L196,400 L180,400 Z" fill="url(#needleGradient)" opacity="0.2" />
+    
+    <!-- Great Wheel reflection -->
+    <ellipse cx="950" cy="360" rx="30" ry="10" fill="url(#needleGradient)" opacity="0.2" />
+  </g>
+</svg>
