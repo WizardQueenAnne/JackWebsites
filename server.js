@@ -14,6 +14,13 @@ const server = http.createServer((req, res) => {
     if (url === '') url = '/';
     if (url === '/') url = '/index.html';
     
+    // Handle clean URLs for terms and disclaimer
+    if (url === '/terms') {
+        url = '/terms.html';
+    } else if (url === '/disclaimer') {
+        url = '/disclaimer.html';
+    }
+    
     // Determine content type based on file extension
     const extname = path.extname(url);
     let contentType = 'text/html';
