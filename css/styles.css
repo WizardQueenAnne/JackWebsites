@@ -2575,3 +2575,62 @@ textarea.form-control {
         margin-bottom: 3rem;
     }
 }
+/*--------------------------------------------------------------
+# Terms of Service Page
+--------------------------------------------------------------*/
+.terms-section {
+    margin-top: 10rem;
+    background-color: var(--light-color);
+}
+
+.terms-content {
+    margin-bottom: 5rem;
+    font-size: 1.6rem;
+}
+
+.terms-section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    color: var(--primary-color);
+}
+
+.terms-section ul {
+    margin-left: 2rem;
+    list-style-type: disc;
+    margin-bottom: 2rem;
+}
+
+.terms-section ul li {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.terms-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--grey-dark);
+    text-align: center;
+}
+
+.terms-footer p {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.disclaimer-short {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.disclaimer-short a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.disclaimer-short a:hover {
+    color: var(--primary-light);
+}
