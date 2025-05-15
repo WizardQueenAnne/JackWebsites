@@ -802,3 +802,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log("Jack's Seattle Websites - Website loaded successfully!");
 });
+// Performance optimizations
+window.addEventListener('load', function() {
+    // Lazy load images that are not in the initial viewport
+    if ('IntersectionObserver' in window) {
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Reduce animation complexity on mobile
+    if (window.innerWidth < 768) {
+        document.querySelectorAll('[data-aos]').forEach(el => {
+            el.removeAttribute('data-aos');
+            el.removeAttribute('data-aos-delay');
+        });
+    }
+});
