@@ -63,35 +63,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', scrollActive);
 
-    // Counter Animation
-    const counters = document.querySelectorAll('.stat-number');
-    let started = false;
-    
-    function startCounter() {
-        if (window.scrollY > 200 && !started) {
-            counters.forEach(counter => {
-                const target = +counter.dataset.count;
-                let count = 0;
-                const increment = target / 50;
-                
-                function updateCount() {
-                    if (count < target) {
-                        count += increment;
-                        counter.innerHTML = Math.ceil(count);
-                        setTimeout(updateCount, 30);
-                    } else {
-                        counter.innerHTML = target;
-                    }
-                }
-                
-                updateCount();
-            });
+   // Counter Animation - Start immediately on page load
+const counters = document.querySelectorAll('.stat-number');
+let started = false;
+
+function startCounter() {
+    if (!started) {
+        counters.forEach(counter => {
+            const target = +counter.dataset.count;
+            let count = 0;
+            const increment = target / 50;
             
-            started = true;
-        }
+            function updateCount() {
+                if (count < target) {
+                    count += increment;
+                    counter.innerHTML = Math.ceil(count);
+                    setTimeout(updateCount, 30);
+                } else {
+                    counter.innerHTML = target;
+                }
+            }
+            
+            updateCount();
+        });
+        
+        started = true;
     }
-    
-    window.addEventListener('scroll', startCounter);
+}
+
+// Run counter animation on page load instead of scroll
+window.addEventListener('load', startCounter);
+// Also keep the scroll event as a backup
+window.addEventListener('scroll', startCounter);
 
     // AOS Animation Library Initialization
     AOS.init({
