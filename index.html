@@ -3,877 +3,2293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack's Seattle Websites | Professional Web Design for Local Businesses</title>
-    <meta name="description" content="Affordable, professional websites for Seattle small businesses. Fast turnaround, maintenance included, and local support. Packages starting at $299.">
+    <title>Seattle Business & Estate Attorney | Scott Haapala, ESQ</title>
+    <meta name="description" content="Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State. Seattle attorney Scott Haapala provides contract law, business formation, and intellectual property services.">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS Animation Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            /* Art Deco Color Palette */
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E99C;
+            --cream: #FDF6E3;
+            --charcoal: #2C2C2C;
+            --deep-navy: #1A1A2E;
+            --slate: #16213E;
+            --white: #FFFFFF;
+            --silver: #C0C0C0;
+            --accent-blue: #0F3460;
+            --rich-black: #0D1117;
+            
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --section-padding: 120px;
+            --container-padding: 2rem;
+            
+            /* Shadows */
+            --shadow-light: 0 4px 20px rgba(212, 175, 55, 0.15);
+            --shadow-medium: 0 8px 30px rgba(212, 175, 55, 0.25);
+            --shadow-heavy: 0 15px 50px rgba(0, 0, 0, 0.3);
+            
+            /* Borders */
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Art Deco Decorative Elements */
+        .art-deco-border {
+            position: relative;
+        }
+
+        .art-deco-border::before,
+        .art-deco-border::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            height: 2px;
+            width: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .art-deco-border::before {
+            top: -20px;
+        }
+
+        .art-deco-border::after {
+            bottom: -20px;
+        }
+
+        .geometric-pattern {
+            background-image: 
+                linear-gradient(45deg, transparent 40%, var(--primary-gold) 42%, var(--primary-gold) 43%, transparent 45%),
+                linear-gradient(-45deg, transparent 40%, var(--primary-gold) 42%, var(--primary-gold) 43%, transparent 45%);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--primary-gold);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .header.scrolled {
+            background: rgba(26, 26, 46, 0.98);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+            position: relative;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            right: -10px;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--primary-gold), transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+            border-radius: var(--border-radius);
+        }
+
+        .nav-link:hover::before {
+            opacity: 0.1;
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-bounce);
+            border: 2px solid var(--primary-gold);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-cta:hover::before {
+            left: 100%;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-gold);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--slate) 50%, var(--accent-blue) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDeco" patternUnits="userSpaceOnUse" width="20" height="20"><polygon points="10,0 20,10 10,20 0,10" fill="%23D4AF37" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDeco)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--primary-gold);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            border: 2px solid var(--primary-gold);
+            cursor: pointer;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-gold);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease 1s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: var(--primary-gold);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 5%;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation-delay: 4s;
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--section-padding) 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDecoLines" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M0,25 L50,25 M25,0 L25,50" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDecoLines)"/></svg>');
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, var(--deep-navy), var(--slate));
+            color: var(--white);
+            padding: 4rem 3rem;
+            border-radius: var(--border-radius-lg);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .about-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+
+        .about-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            width: 24px;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--section-padding) 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-header h2::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            border: 2px solid var(--cream);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            opacity: 0.05;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .service-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--slate) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="artDecoCircles" patternUnits="userSpaceOnUse" width="30" height="30"><circle cx="15" cy="15" r="1" fill="%23D4AF37" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23artDecoCircles)"/></svg>');
+        }
+
+        .experience-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .experience-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .experience-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
+        }
+
+        .experience-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .credential {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--primary-gold);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        .credential:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .credential h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        .credential p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--section-padding) 0;
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contactPattern" patternUnits="userSpaceOnUse" width="40" height="40"><polygon points="20,5 35,20 20,35 5,20" fill="%23D4AF37" opacity="0.03"/></pattern></defs><rect width="100%" height="100%" fill="url(%23contactPattern)"/></svg>');
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 2px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .contact-details {
+            margin: 3rem 0;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-detail:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateX(10px);
+            border-color: var(--primary-gold);
+        }
+
+        .contact-detail i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-detail-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-gold);
+        }
+
+        .contact-detail-content a,
+        .contact-detail-content p {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-detail-content a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 3.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        .form-container h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: var(--white);
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            transform: scale(1.2);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--deep-navy);
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Form Message Styles */
+        .form-message {
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--border-radius-lg);
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--rich-black);
+            color: var(--silver);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--silver);
+            text-decoration: none;
+            line-height: 1.7;
+            transition: var(--transition-smooth);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            50% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+        }
+
+        @keyframes spin {
+            to { 
+                transform: rotate(360deg); 
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            :root {
+                --section-padding: 80px;
+                --container-padding: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 46, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 3rem 2rem;
+                transition: left 0.4s ease;
+                box-shadow: var(--shadow-heavy);
+                gap: 2rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+                min-height: auto;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .about-content,
+            .experience-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .stat-card {
+                padding: 2rem 1.5rem;
+            }
+
+            :root {
+                --section-padding: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2.5rem 2rem;
+            }
+
+            .about-card,
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-width: auto;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Intersection Observer Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Phone number display styles */
+        .phone-display {
+            font-weight: 600;
+            color: var(--deep-navy);
+            font-size: 1.1rem;
+        }
+
+        /* Phone number in about card (navy background) */
+        .about-card .phone-display {
+            color: var(--white);
+        }
+
+        /* Phone number in contact section (dark background) */
+        .contact .phone-display {
+            color: var(--white);
+        }
+
+        /* Phone number in footer (dark background) */
+        .footer .phone-display {
+            color: var(--silver);
+        }
+
+        .footer .phone-display:hover {
+            color: var(--primary-gold);
+        }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-    </div>
-
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#home" class="logo">
-                    <span class="logo-text">Jack's <span class="highlight">Seattle</span> Websites</span>
-                </a>
-                
-                <div class="nav-container">
-                    <ul class="nav-menu">
-                        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
-                        <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                        <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-sm btn-primary header-cta">Get Website Quote</a>
-                </div>
-                
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
-        </div>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">Seattle Legal Advisor</a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Practice Areas</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><span class="nav-cta phone-display">206-240-0442</span></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-particles"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text" data-aos="fade-up" data-aos-delay="200">
-                    <div class="badge"><i class="fas fa-map-marker-alt"></i> Seattle-based Web Designer</div>
-                    <h1 class="hero-title">Professional Websites for <span class="highlight">Local</span> Businesses</h1>
-                    <p class="hero-description">Affordable. Fast. Built with care. I help small businesses establish a strong online presence without breaking the bank.</p>
-                    
-                    <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary btn-lg">Get Website Quote</a>
-                        <a href="#portfolio" class="btn btn-outline-primary">See My Work</a>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-text">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="100">0</span><span>%</span>
-                            <span class="stat-text">Client Focused</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-text">Day Average Delivery</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
-                    <div class="floating-image">
-                        <img src="images/hero-illustration.svg" alt="Web Design Illustration">
-                    </div>
-                </div>
-            </div>
+        <div class="floating-shapes">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
         </div>
         
-        <div class="hero-wave">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,224C672,235,768,245,864,240C960,235,1056,213,1152,202.7C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Why Choose Me Section -->
-    <section id="services" class="services section-padding">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Why Choose Me</span>
-                <h2 class="section-title">What Makes Me <span class="highlight">Different</span></h2>
-                <p class="section-description">I build websites that look professional, load quickly, and help your business grow.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h3>Affordable One-Time Pricing</h3>
-                    <p>No monthly fees for your website. Pay once and it's yours forever, with clear pricing and no hidden costs.</p>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Licensed in WA, DC & MD</span>
                 </div>
                 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Maintenance Included</h3>
-                    <p>Optional monthly maintenance plan for just $5/month to keep your site updated, secure, and running smoothly.</p>
-                </div>
+                <h1 class="hero-title">Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs</h1>
                 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Fast Turnaround Time</h3>
-                    <p>Most websites are completed within 1-3 days, with 24-hour rush delivery available for an additional fee.</p>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>Seattle-Based, Local Support</h3>
-                    <p>As a Seattle local, I understand the unique needs of businesses in our community and provide personalized support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <p class="hero-subtitle">
+                    I'm Scott Haapala, a Seattle-based attorney who helps individuals and businesses navigate legal matters with clarity and confidence. Whether you're forming a new company, negotiating a contract, or preparing to sell your business, I offer practical, responsive legal support tailored to your specific goals.
+                </p>
 
-    <!-- Process Section -->
-    <section class="process section-padding bg-light">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">How I Work</span>
-                <h2 class="section-title">Simple <span class="highlight">Process</span></h2>
-                <p class="section-description">Getting your business online is easier than you think.</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Consultation</h3>
-                        <p>We'll discuss your business goals, target audience, and website requirements.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Design</h3>
-                        <p>I'll create a custom design mockup for your approval before building begins.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Development</h3>
-                        <p>Once approved, I'll build your website with attention to detail and performance.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Launch</h3>
-                        <p>After your final approval, we'll launch your new website and celebrate!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section-padding">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Simple & Transparent</span>
-                <h2 class="section-title">Website <span class="highlight">Packages</span></h2>
-                <p class="section-description">Affordable website packages for small businesses.</p>
-            </div>
-            
-            <div class="pricing-cards">
-                <!-- Starter Package -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="pricing-card-header">
-                        <div class="pricing-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Starter</h3>
-                        <p class="pricing-description">1 Page Website</p>
-                    </div>
-                    
-                    <div class="pricing-card-body">
-                        <div class="price-tag">
-                            <span class="price">$299</span>
-                            <span class="period">one-time</span>
-                        </div>
-                        
-                        <p class="pricing-subtitle">Perfect for a simple landing page with your contact info, location, and hours.</p>
-                        
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 1 page website</li>
-                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
-                            <li><i class="fas fa-check"></i> Contact form</li>
-                            <li><i class="fas fa-check"></i> Business hours</li>
-                            <li><i class="fas fa-check"></i> Location map</li>
-                            <li><i class="fas fa-check"></i> Domain & hosting setup*</li>
-                        </ul>
-                        
-                        <div class="pricing-note">*Domain & hosting fees not included</div>
-                    </div>
-                    
-                    <div class="pricing-card-footer">
-                        <a href="#contact" class="btn btn-outline-primary btn-block">Get Started</a>
-                    </div>
-                </div>
-                
-                <!-- Standard Package -->
-                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
-                    <div class="pricing-badge">Popular</div>
-                    <div class="pricing-card-header">
-                        <div class="pricing-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <h3>Standard</h3>
-                        <p class="pricing-description">2-3 Page Website</p>
-                    </div>
-                    
-                    <div class="pricing-card-body">
-                        <div class="price-tag">
-                            <span class="price">$499</span>
-                            <span class="period">one-time</span>
-                        </div>
-                        
-                        <p class="pricing-subtitle">Great for small businesses that want a Home page, About page, and Contact page.</p>
-                        
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 2-3 page website</li>
-                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
-                            <li><i class="fas fa-check"></i> Contact form</li>
-                            <li><i class="fas fa-check"></i> About/Team page</li>
-                            <li><i class="fas fa-check"></i> Google Maps integration</li>
-                            <li><i class="fas fa-check"></i> Google Analytics setup</li>
-                            <li><i class="fas fa-check"></i> Social media links</li>
-                        </ul>
-                        
-                        <div class="pricing-note">*Domain & hosting fees not included</div>
-                    </div>
-                    
-                    <div class="pricing-card-footer">
-                        <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
-                    </div>
-                </div>
-                
-                <!-- Advanced Package -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="pricing-card-header">
-                        <div class="pricing-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3>Advanced</h3>
-                        <p class="pricing-description">4-6 Page Website</p>
-                    </div>
-                    
-                    <div class="pricing-card-body">
-                        <div class="price-tag">
-                            <span class="price">$799</span>
-                            <span class="period">one-time</span>
-                        </div>
-                        
-                        <p class="pricing-subtitle">For businesses that want to showcase services, team, gallery, etc.</p>
-                        
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 4-6 page website</li>
-                            <li><i class="fas fa-check"></i> Mobile-responsive design</li>
-                            <li><i class="fas fa-check"></i> Enhanced contact form</li>
-                            <li><i class="fas fa-check"></i> Services/Products display</li>
-                            <li><i class="fas fa-check"></i> Photo gallery/portfolio</li>
-                            <li><i class="fas fa-check"></i> Testimonials section</li>
-                            <li><i class="fas fa-check"></i> Advanced SEO setup</li>
-                        </ul>
-                        
-                        <div class="pricing-note">*Domain & hosting fees not included</div>
-                    </div>
-                    
-                    <div class="pricing-card-footer">
-                        <a href="#contact" class="btn btn-outline-primary btn-block">Get Started</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 24-Hour Rush Option -->
-            <div class="maintenance-box" data-aos="fade-up">
-                <div class="maintenance-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <div class="maintenance-content">
-                    <h3>24-Hour Rush Delivery</h3>
-                    <div class="maintenance-price">
-                        <span class="price">+25%</span>
-                        <span class="period">surcharge</span>
-                    </div>
-                    <p>Need your website in a hurry? Add the rush option to any package</p>
-                    
-                    <div class="maintenance-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Guaranteed 24-hour delivery</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Priority support</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Same high-quality design</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Specify in the contact form</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Monthly Maintenance Box -->
-            <div class="maintenance-box" data-aos="fade-up">
-                <div class="maintenance-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <div class="maintenance-content">
-                    <h3>Monthly Maintenance</h3>
-                    <div class="maintenance-price">
-                        <span class="price">$5</span>
-                        <span class="period">per month</span>
-                    </div>
-                    <p>Add to any package for ongoing support and updates</p>
-                    
-                    <div class="maintenance-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Small edits or updates anytime</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Site uptime monitoring</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Quick bug fixes</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Priority response</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Domain & Hosting Note -->
-            <div class="domain-hosting-note" data-aos="fade-up">
-                <div class="note-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <div class="note-content">
-                    <h4>About Domain & Hosting</h4>
-                    <ul>
-                        <li><i class="fas fa-angle-right"></i> You will own your domain name (typically $12-15/year from GoDaddy or Namecheap)</li>
-                        <li><i class="fas fa-angle-right"></i> You will pay for hosting directly (typically $5-10/month)</li>
-                        <li><i class="fas fa-angle-right"></i> I'll help you set everything up and manage your site</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section-padding bg-light">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">My Work</span>
-                <h2 class="section-title">Recent <span class="highlight">Projects</span></h2>
-                <p class="section-description">Check out some of the websites I've created for local businesses.</p>
-            </div>
-            
-            <div class="portfolio-showcase" data-aos="fade-up">
-<div class="featured-project">
-    <div class="project-image rounded shadow">
-        <a href="https://insectiscan.com" target="_blank" rel="noopener">
-            <img src="images/portfolio-featured.png" alt="InsectScan App Website">
-            <div class="project-overlay">
-                <div class="project-details">
-                    <h3>InsectiScan</h3>
-                    <p class="project-category">App Website</p>
-                    <span class="btn btn-sm btn-light view-project">View Project</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="project-info">
-        <h3>InsectScan App Website</h3>
-        <p>A modern website for a Seattle-based app that identifies and diagnoses insect bites based on user-provided images and descriptions. The site serves as an outdoor companion and help resource, with intuitive navigation and responsive design.</p>
-        <ul class="project-features">
-            <li><i class="fas fa-check-circle"></i> Mobile-responsive design</li>
-            <li><i class="fas fa-check-circle"></i> App download integration</li>
-            <li><i class="fas fa-check-circle"></i> Interactive insect database</li>
-            <li><i class="fas fa-check-circle"></i> User-friendly interface</li>
-        </ul>
-        <div class="project-link">
-            <a href="https://insectiscan.com" target="_blank" rel="noopener" class="btn btn-outline-primary">View Live Site</a>
-        </div>
-    </div>
-</div>
-                
-<div class="portfolio-grid">
-<!-- Project 1 - FlipHawk -->
-<div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
-    <div class="portfolio-img rounded shadow">
-        <a href="https://fliphawk.org" target="_blank" rel="noopener" onclick="window.open('https://fliphawk.org', '_blank'); return false;">
-            <img src="images/portfolio-1.png" alt="FlipHawk - Resale Finder Website">
-            <div class="portfolio-overlay">
-                <div class="portfolio-overlay-content">
-                    <h3>FlipHawk</h3>
-                    <p>Resale Finder Website</p>
-                    <span class="portfolio-link">
-                        <i class="fas fa-external-link-alt"></i>
+                <div class="hero-buttons">
+                    <span class="btn btn-primary phone-display">
+                        <i class="fas fa-phone"></i>
+                        206-240-0442
                     </span>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-calendar-check"></i>
+                        Free Consultation
+                    </a>
                 </div>
-            </div>
-        </a>
-    </div>
-</div>
-    
-    <!-- Project 2 - Replace URL with your actual website -->
-    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
-        <div class="portfolio-img rounded shadow">
-            <a href="https://yourwebsite2.com" target="_blank" rel="noopener">
-                <img src="images/portfolio-2.jpg" alt="Project 2 Name">
-                <div class="portfolio-overlay">
-                    <div class="portfolio-overlay-content">
-                        <h3>Project Name</h3>
-                        <p>Project Category</p>
-                        <span class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    
-    <!-- Project 3 - Replace URL with your actual website -->
-    <div class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="portfolio-img rounded shadow">
-            <a href="https://yourwebsite3.com" target="_blank" rel="noopener">
-                <img src="images/portfolio-3.jpg" alt="Project 3 Name">
-                <div class="portfolio-overlay">
-                    <div class="portfolio-overlay-content">
-                        <h3>Project Name</h3>
-                        <p>Project Category</p>
-                        <span class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-                
-                <!-- View More Button -->
-                <div class="view-more text-center" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#contact" class="btn btn-primary">Want Something Similar?</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Seattle Section -->
-    <section class="seattle-section section-padding">
-        <div class="container">
-            <div class="seattle-content" data-aos="fade-up">
-                <div class="seattle-image">
-                    <img src="images/seattle-skyline.svg" alt="Seattle Skyline" class="seattle-skyline">
-                </div>
-                <div class="seattle-text">
-                    <h2>Proudly Serving <span class="highlight">Seattle</span> Small Businesses</h2>
-                    <p>As a Seattle local, I understand the unique needs of our community's businesses. I'm committed to helping my neighbors establish a strong online presence that resonates with our local culture and values.</p>
-                    <a href="#contact" class="btn btn-outline-primary">Work With a Local</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq section-padding">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Questions & Answers</span>
-                <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
-                <p class="section-description">Answers to common questions about my web design services.</p>
-            </div>
-            
-            <div class="faq-container" data-aos="fade-up">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How long does it take to build a website?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="37">0</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                    <div class="faq-answer">
-                        <p>Most projects are completed within 1-3 days depending on the complexity and package selected. If you need your website even faster, I offer a 24-hour rush delivery option for an additional 25% of the package price.</p>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">States Licensed</div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do I need to provide content for my website?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, you'll need to provide the basic content (text and images) for your website. I can help with basic content organization and suggestions, but you know your business best! I'll help you organize everything to look great.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do domain names and hosting work?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You'll need to purchase a domain name (your website address, like yourname.com) and hosting (where your website lives online). I'll recommend affordable options based on your needs and help you set everything up. You'll own these accounts and pay for them directly (typically $12-15/year for a domain and $5-10/month for hosting).</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I update the website myself after it's built?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! I build websites that are easy to update, and I'll provide basic training on how to make simple changes to your content. For more complex updates, you can either add the monthly maintenance plan or contact me for specific changes as needed.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What payment methods do you accept?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>I accept payment via PayPal, Venmo, or direct bank transfer. For all projects, I require a 50% deposit before starting, with the remaining 50% due upon completion before the website goes live.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do we get started?</h3>
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Simply fill out the contact form below with some details about your project, and I'll get back to you within 24 hours to schedule a consultation call. Once we've discussed your needs, I'll provide a detailed proposal for your approval.</p>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">% Client Focused</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta section-padding bg-primary">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Ready to take your business online?</h2>
-                <p>Let's work together to create a website that grows your business!</p>
-                <a href="#contact" class="btn btn-light btn-lg btn-pulse">Get Started Today</a>
+            <div class="about-content">
+                <div class="about-text slide-in-left animate-on-scroll">
+                    <h2>A Personalized Legal Approach That Puts You First</h2>
+                    <p class="lead">
+                        At Seattle Legal Advisor, I bring firsthand experience as both a lawyer and business owner. I've started, run, and advised businesses across industries—and I know how important it is to have someone in your corner who can explain the legal fine print and protect your interests.
+                    </p>
+                    <p>
+                        <strong>Scott M. Haapala</strong> is an attorney, husband, father, gardener and artist. His corporate legal career began working at Baker & McKenzie where international energy, corporate finance, and business transactions consumed all his time. Motivated to make a greater contribution to the environment, Scott moved to the Environmental Integrity Project to focus on environmental enforcement of the Clean Air and Clean Water Acts.
+                    </p>
+                    <p>
+                        Every client has different goals—and different risk tolerance. I take the time to understand your business, your values, and what success means to you. Then I help you move forward with confidence.
+                    </p>
+                </div>
+
+                <div class="about-card slide-in-right animate-on-scroll">
+                    <div class="about-card-content">
+                        <h3>Scott M. Haapala, ESQ</h3>
+                        <p>
+                            Licensed attorney in Washington, DC, and Maryland with over 37 years of experience helping businesses and individuals navigate complex legal matters with strategic counsel and careful attention to detail.
+                        </p>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span class="phone-display">206-240-0442</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Serving Washington State</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Legal Services Rooted in Strategy and Clarity</h2>
+                <p>
+                    My practice focuses on helping clients make smart, informed decisions across a comprehensive range of legal areas.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll" onclick="window.location.href='contract-law.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Contract Law</h3>
+                    <p>
+                        From contract drafting, amending, and negotiation to handling breach of contract disputes, I make sure your agreements are sound, clear, and enforceable.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-formation.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Business Formation</h3>
+                    <p>
+                        Launching a new venture in Washington? I help clients choose the right structure, handle compliance, and build a solid legal foundation.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-law.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Corporate & Business Law</h3>
+                    <p>
+                        I advise startups, closely held companies, employee-owned entities, nonprofits, and growing businesses on corporate formation, restructuring, and day-to-day legal needs.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='mergers-acquisitions.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Mergers & Acquisitions</h3>
+                    <p>
+                        Whether you're buying or selling a business, I'll guide you through the transaction process with strategic counsel and careful due diligence.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='business-succession-planning.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Business Succession Planning</h3>
+                    <p>
+                        When it's time to pass the torch, I'm here to help you do it smoothly—with plans that protect your legacy and secure your business's future.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='intellectual-property.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Intellectual Property</h3>
+                    <p>
+                        Your ideas matter. I help clients protect their creative assets—trademarks, copyrights, and trade secrets—with proactive legal protection.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='entertainment-law.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Entertainment Law</h3>
+                    <p>
+                        Having spent decades as a performing artist and promoter, I know the music industry well. From licensing and contracts to IP protection, I support musicians, producers, venues, labels, and creatives.
+                    </p>
+                </div>
+
+                <div class="service-card animate-on-scroll" onclick="window.location.href='estate-planning.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Estate Planning</h3>
+                    <p>
+                        For individuals and families, I provide estate planning services including wills, trusts, and powers of attorney—so your future is protected.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="experience-content">
+                <div class="experience-text slide-in-left animate-on-scroll">
+                    <h2>Experience You Can Trust</h2>
+                    <p>
+                        If you're looking for a law firm that combines big-picture thinking with fine-detail execution, you're in the right place. I have a thorough understanding of Washington law and know first-hand the trials and tribulations that come with being a business owner.
+                    </p>
+                    <p>
+                        My office is located in Burien, and I work with clients throughout Seattle, King County, and across Washington State. I make it easy to connect—most clients meet with me virtually via Zoom, Microsoft Teams, or by phone, so there's no need to leave your office.
+                    </p>
+                </div>
+
+                <div class="credentials slide-in-right animate-on-scroll">
+                    <div class="credential">
+                        <h4>Education</h4>
+                        <p>University of Washington School of Law Graduate (2000)</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Former Experience</h4>
+                        <p>Baker & McKenzie Corporate Attorney</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Specializations</h4>
+                        <p>Business Owner & Environmental Law Specialist</p>
+                    </div>
+                    <div class="credential">
+                        <h4>Licensed In</h4>
+                        <p>Washington, DC, Maryland</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section-padding">
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Get In Touch</span>
-                <h2 class="section-title">Let's Build Your <span class="highlight">Website</span></h2>
-                <p class="section-description">Fill out the form below and I'll get back to you within 24 hours.</p>
-            </div>
-            
-            <div class="contact-wrapper" data-aos="fade-up">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-content">
+                <div class="contact-info slide-in-left animate-on-scroll">
+                    <h2>Let's Talk About Your Next Step</h2>
+                    <p>
+                        Whether you're just getting started or facing a complex legal issue, I'm here to help. When you retain the services of Seattle Legal Advisor, you can be assured that your attorney is fully qualified to take on your case.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-detail-content">
+                                <h4>Phone</h4>
+                                <span class="phone-display">206-240-0442</span>
+                            </div>
                         </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Seattle, Washington</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
+
+                        <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
+                            <div class="contact-detail-content">
+                                <h4>Email</h4>
+                                <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                            </div>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>jacksseattlewebsites@gmail.com</p>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-detail-content">
+                                <h4>Serving</h4>
+                                <p>Seattle, King County & Washington State</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-video"></i>
+                            <div class="contact-detail-content">
+                                <h4>Virtual Meetings</h4>
+                                <p>Zoom, Microsoft Teams, Phone</p>
+                            </div>
                         </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>(206) 555-1234</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Working Hours</h3>
-                            <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
-                            <p>Weekends: By appointment</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                
-                <div class="contact-form-wrapper">
-<!-- For the contact form -->
-<form id="contactForm" class="contact-form" action="https://formsubmit.co/jacksseattlewebsites@gmail.com" method="POST" target="_blank">
-    <!-- Hidden fields for FormSubmit configuration -->
-    <input type="hidden" name="_subject" value="Website Inquiry!">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://jackwebsites.github.io/?thankyou=true">
-    
-    <div class="form-row">
-        <div class="form-group">
-            <label for="name">Your Name*</label>
-            <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="businessName">Business Name*</label>
-            <input type="text" id="businessName" name="businessName" class="form-control" required>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group">
-            <label for="email">Email Address*</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="phone">Phone Number (optional)</label>
-            <input type="tel" id="phone" name="phone" class="form-control">
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label for="websitePlan">Website Plan Requested*</label>
-        <select id="websitePlan" name="websitePlan" class="form-control" required>
-            <option value="" selected disabled>Select a plan</option>
-            <option value="Starter">Starter (1 Page) - $299</option>
-            <option value="Standard">Standard (2-3 Pages) - $499</option>
-            <option value="Advanced">Advanced (4-6 Pages) - $799</option>
-            <option value="Custom">Custom / Other</option>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="rushDelivery">Need 24-Hour Rush Delivery? (+25%)</label>
-        <select id="rushDelivery" name="rushDelivery" class="form-control">
-            <option value="No" selected>No - Standard 1-3 day delivery</option>
-            <option value="Yes">Yes - 24-hour rush delivery (+25%)</option>
-        </select>
-    </div>
-    
-   
-    
-    <div class="form-group">
-        <label for="message">Any Notes or Special Requests</label>
-        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell me about your business and what you're looking for in a website"></textarea>
-    </div>
-    
-    <div class="form-group">
-        <div class="form-check">
-            <input type="checkbox" id="consent" name="consent" class="form-check-input" required>
-            <label for="consent" class="form-check-label">I consent to having my information stored so Jack can respond to my inquiry.</label>
-        </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary btn-block">Send Request</button>
-</form>
+
+                <div class="form-container slide-in-right animate-on-scroll">
+                    <h3>Request a Free Consultation</h3>
+                    <form id="contact-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" value="Washington">
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="how_found">How did you find us?</label>
+                                <select id="how_found" name="how_found">
+                                    <option value="">Please select</option>
+                                    <option value="Google Search">Google Search</option>
+                                    <option value="Referral">Referral</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Advertisement">Advertisement</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_method">Preferred Contact Method</label>
+                                <select id="contact_method" name="contact_method">
+                                    <option value="">Please select</option>
+                                    <option value="Phone">Phone</option>
+                                    <option value="Email">Email</option>
+                                    <option value="Video Call">Video Call</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Tell me about your legal needs *</label>
+                            <textarea id="message" name="message" placeholder="Please describe your legal situation and how I can assist you. The more details you provide, the better I can prepare for our consultation." required></textarea>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="disclaimer" name="disclaimer" required>
+                            <label for="disclaimer">
+                                I understand that contacting Seattle Legal Advisor through this website does not create an attorney-client relationship, and the information I provide is not privileged or confidential until an attorney-client relationship is established.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-top">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3 class="logo-text">Jack's <span>Seattle</span> Websites</h3>
-                    <p>Creating affordable, professional websites for small businesses in Seattle.</p>
-                    <div class="disclaimer-short">
-                        <p>Student-run freelance service. <a href="disclaimer.html">View full disclaimer</a>.</p>
-                    </div>
-                    <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    </div>
+                <div class="footer-section">
+                    <h4>Seattle Legal Advisor</h4>
+                    <p>Scott M. Haapala PLLC</p>
+                    <p>Straightforward Legal Advice for Businesses, Creatives, and Entrepreneurs in Washington State</p>
+                    <p style="margin-top: 1.5rem;">
+                        <strong>Ethical. Knowledgeable. Proactive.</strong><br>
+                        Business Law and Intellectual Property Attorney
+                    </p>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#pricing">Starter Website ($299)</a></li>
-                        <li><a href="#pricing">Standard Website ($499)</a></li>
-                        <li><a href="#pricing">Advanced Website ($799)</a></li>
-                        <li><a href="#pricing">24-Hour Rush Delivery</a></li>
-                        <li><a href="#pricing">Monthly Maintenance ($5/mo)</a></li>
-                        <li><a href="#contact">Custom Projects</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Legal</h3>
-                    <ul>
-                        <a href="terms.html">Terms of Service</a>
-                        <a href="disclaimer.html">Legal Disclaimer</a>
-                    </ul>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to receive tips and updates on web design trends.</p>
-                    <form class="newsletter-form" action="https://formsubmit.co/jacksseattlewebsites@gmail.com" method="POST" target="_blank">
-                        <!-- Hidden fields for FormSubmit configuration -->
-                        <input type="hidden" name="_subject" value="Newsletter Subscription!">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://jackwebsites.github.io/?newsletter=subscribed">
-                        <input type="hidden" name="form-type" value="newsletter">
-                        
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <button type="submit" class="btn btn-sm btn-primary" style="min-width: 90px;">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="copyright">
-                <p>&copy; 2025 Jack's Seattle Websites. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</footer>
 
-    <!-- Live chat widget -->
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-button" id="chatButton">
-            <i class="fas fa-comments"></i>
-            <span>Chat with me</span>
-        </div>
-        <div class="chat-box" id="chatBox">
-            <div class="chat-header">
-                <h3>Chat with Jack</h3>
-                <span class="chat-close" id="chatClose">&times;</span>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message received">
-                    <div class="message-content">
-                        <p>👋 Hi there! I'm Jack. How can I help with your website needs today?</p>
-                    </div>
-                    <span class="message-time">Just now</span>
+                <div class="footer-section">
+                    <h4>Practice Areas</h4>
+                    <a href="contract-law.html">Contract Law</a>
+                    <a href="business-formation.html">Business Formation</a>
+                    <a href="corporate-law.html">Corporate Law</a>
+                    <a href="mergers-acquisitions.html">Mergers & Acquisitions</a>
+                    <a href="intellectual-property.html">Intellectual Property</a>
+                    <a href="entertainment-law.html">Entertainment Law</a>
+                    <a href="estate-planning.html">Estate Planning</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <span class="phone-display">206-240-0442</span>
+                    <a href="mailto:scotthaapala@gmail.com">scotthaapala@gmail.com</a>
+                    <p>Licensed in WA, DC, MD</p>
+                    <p>Serving Washington State</p>
                 </div>
             </div>
-            <div class="chat-input">
-                <textarea id="messageInput" placeholder="Type your message..."></textarea>
-                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seattle Legal Advisor - Scott M. Haapala PLLC. All rights reserved.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                    Attorney Advertising. Prior results do not guarantee similar outcomes.
+                </p>
             </div>
         </div>
-    </div>
-    
-    <!-- Cookie consent banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <p>This website uses cookies to ensure you get the best experience. <a href="#" id="cookiePolicy">Cookie Policy</a></p>
-            <div class="cookie-buttons">
-                <button id="cookieAccept" class="btn btn-sm btn-primary">Accept</button>
-                <button id="cookieDecline" class="btn btn-sm btn-outline-primary">Decline</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="js/main.js"></script>
-<script>
-  // Improve performance by deferring non-critical operations
-  document.addEventListener('DOMContentLoaded', function() {
-    // Delay AOS initialization to improve initial load performance
-    setTimeout(function() {
-      AOS.init({
-        disable: window.innerWidth < 768, // Disable on mobile devices
-        once: true, // Only animate elements once
-        duration: 600 // Shorter animation duration
-      });
-    }, 100);
-  });
-</script>
+    </footer>
+
+    <script>
+        // Enhanced Mobile Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        }
+
+        // Enhanced Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Hide/show header on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 90;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Enhanced Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add staggered delay for service cards
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    
+                    // Trigger number animation for stat cards
+                    if (entry.target.classList.contains('stat-card')) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber && !statNumber.dataset.animated) {
+                            animateStatNumber(statNumber);
+                            statNumber.dataset.animated = 'true';
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-on-scroll, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced stat number animation
+        function animateStatNumber(element) {
+            const target = parseInt(element.dataset.target) || parseInt(element.textContent.replace(/\D/g, ''));
+            const suffix = element.textContent.includes('%') ? '%' : (element.textContent.includes('+') ? '+' : '');
+            
+            let current = 0;
+            const increment = target / 100;
+            const duration = 2000;
+            const stepTime = duration / 100;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, stepTime);
+        }
+
+        // Enhanced contact form handling
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    company: formData.get('company'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    city: formData.get('city'),
+                    state: formData.get('state'),
+                    how_found: formData.get('how_found'),
+                    contact_method: formData.get('contact_method'),
+                    message: formData.get('message'),
+                    disclaimer: formData.get('disclaimer')
+                };
+
+                // Enhanced client-side validation
+                const validation = validateForm(data);
+                if (!validation.isValid) {
+                    showMessage(validation.message, 'error');
+                    return;
+                }
+
+                const submitButton = contactForm.querySelector('.submit-btn');
+                const originalHTML = submitButton.innerHTML;
+                
+                // Show loading state
+                submitButton.innerHTML = '<span class="loading"></span> Sending Message...';
+                submitButton.disabled = true;
+
+                try {
+                    const response = await fetch('/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        showMessage(result.message, 'success');
+                        contactForm.reset();
+                        
+                        // Add success animation
+                        submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                        submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalHTML;
+                            submitButton.style.background = 'linear-gradient(135deg, var(--primary-gold), var(--dark-gold))';
+                            submitButton.disabled = false;
+                        }, 3000);
+                    } else {
+                        showMessage(result.message, 'error');
+                        submitButton.innerHTML = originalHTML;
+                        submitButton.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showMessage('There was an error sending your message. Please try again or call directly at 206-240-0442.', 'error');
+                    submitButton.innerHTML = originalHTML;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Enhanced form validation
+        function validateForm(data) {
+            if (!data.name || data.name.length < 2) {
+                return { isValid: false, message: 'Please provide a valid name (at least 2 characters).' };
+            }
+
+            if (!data.email || !isValidEmail(data.email)) {
+                return { isValid: false, message: 'Please provide a valid email address.' };
+            }
+
+            if (!data.phone || !isValidPhone(data.phone)) {
+                return { isValid: false, message: 'Please provide a valid phone number (at least 10 digits).' };
+            }
+
+            if (!data.message || data.message.length < 10) {
+                return { isValid: false, message: 'Please provide more details about your legal needs (at least 10 characters).' };
+            }
+
+            if (!data.disclaimer) {
+                return { isValid: false, message: 'Please agree to the disclaimer to continue.' };
+            }
+
+            return { isValid: true, message: 'Form is valid' };
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneDigits = phone.replace(/\D/g, '');
+            return phoneDigits.length >= 10;
+        }
+
+        // Enhanced message display
+        function showMessage(message, type) {
+            // Remove any existing messages
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            // Create new message element
+            const messageEl = document.createElement('div');
+            messageEl.className = `form-message ${type}`;
+            messageEl.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                ${message}
+            `;
+            
+            // Insert message before the form
+            contactForm.parentNode.insertBefore(messageEl, contactForm);
+
+            // Animate in
+            setTimeout(() => {
+                messageEl.style.opacity = '1';
+                messageEl.style.transform = 'translateY(0)';
+            }, 100);
+
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                if (messageEl && messageEl.parentNode) {
+                    messageEl.style.opacity = '0';
+                    messageEl.style.transform = 'translateY(-20px)';
+                    setTimeout(() => {
+                        if (messageEl.parentNode) {
+                            messageEl.remove();
+                        }
+                    }, 300);
+                }
+            }, 8000);
+        }
+
+        // Enhanced service card interactions - make them clickable
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            // Stagger animation delays
+            card.style.setProperty('--delay', `${index * 0.1}s`);
+            
+            // Enhanced hover effects
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.03)';
+                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = 'var(--shadow-heavy)';
+            });
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                } else if (value.length >= 3) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                }
+                e.target.value = value;
+            });
+        }
+
+        // Enhanced form field interactions
+        const formInputs = document.querySelectorAll('input, textarea, select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+
+            // Real-time validation feedback
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else if (this.id === 'phone' && this.value && !isValidPhone(this.value)) {
+                    this.style.borderColor = '#ef4444';
+                    this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.2)';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in page content
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Initialize stat number animations when visible
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(number => {
+                const target = parseInt(number.dataset.target);
+                if (target) {
+                    number.textContent = '0';
+                }
+            });
+
+            // Add staggered animations for service cards
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Keyboard accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            // Escape key closes mobile menu
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+
+            // Enter key on service cards navigates to page
+            if (e.key === 'Enter' && e.target.classList.contains('service-card')) {
+                e.target.click();
+            }
+        });
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Add error boundary for JavaScript errors
+        window.addEventListener('error', (e) => {
+            console.error('JavaScript error:', e.error);
+        });
+
+        // Add loading states for better UX
+        window.addEventListener('load', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.complete) {
+                    img.style.opacity = '0';
+                    img.addEventListener('load', () => {
+                        img.style.transition = 'opacity 0.5s ease';
+                        img.style.opacity = '1';
+                    });
+                }
+            });
+        });
+
+        console.log('Seattle Legal Advisor - Home page initialized successfully!');
+    </script>
 </body>
 </html>
